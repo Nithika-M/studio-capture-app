@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Screen Recording Floating Widget - Studio Capture</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=Manrope:wght@500;600;700;800&amp;family=JetBrains+Mono:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "tertiary-container": "#d63135",
+            "on-tertiary-fixed-variant": "#930013",
+            "on-surface": "#e2e2eb",
+            "error": "#ffb4ab",
+            "surface-container-low": "#191b22",
+            "primary-fixed-dim": "#ffb4ab",
+            "on-primary": "#690005",
+            "surface-container-high": "#282a30",
+            "on-background": "#e2e2eb",
+            "tertiary-fixed": "#ffdad7",
+            "surface-tint": "#ffb4ab",
+            "on-primary-fixed": "#410002",
+            "outline": "#ac8884",
+            "inverse-primary": "#bf0715",
+            "outline-variant": "#5c403c",
+            "secondary-fixed": "#d4e4fa",
+            "primary-fixed": "#ffdad6",
+            "on-tertiary": "#68000a",
+            "on-tertiary-container": "#fff6f5",
+            "on-primary-container": "#fff6f5",
+            "on-secondary-fixed-variant": "#39485a",
+            "primary": "#ffb4ab",
+            "surface-container-lowest": "#0c0e14",
+            "tertiary-fixed-dim": "#ffb3ad",
+            "secondary-container": "#39485a",
+            "on-tertiary-fixed": "#410004",
+            "tertiary": "#ffb3ad",
+            "inverse-on-surface": "#2e3037",
+            "surface": "#111319",
+            "surface-dim": "#111319",
+            "surface-variant": "#33343b",
+            "on-error-container": "#ffdad6",
+            "surface-container-highest": "#33343b",
+            "on-secondary-fixed": "#0d1c2d",
+            "secondary-fixed-dim": "#b9c8de",
+            "on-secondary": "#233143",
+            "on-error": "#690005",
+            "surface-bright": "#373940",
+            "background": "#111319",
+            "primary-container": "#dc2626",
+            "error-container": "#93000a",
+            "on-primary-fixed-variant": "#93000b",
+            "secondary": "#b9c8de",
+            "on-surface-variant": "#e6bdb8",
+            "on-secondary-container": "#a7b6cc",
+            "inverse-surface": "#e2e2eb",
+            "surface-container": "#1e1f26"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xs": "0.25rem",
+            "space-xl": "2rem",
+            "margin-compact": "1rem",
+            "space-md": "1rem",
+            "margin": "1.25rem",
+            "gutter-sm": "0.75rem",
+            "gutter": "1rem",
+            "space-sm": "0.5rem",
+            "space-lg": "1.5rem"
+          },
+          "fontFamily": {
+            "body-sm": ["Hanken Grotesk"],
+            "body-md": ["Hanken Grotesk"],
+            "headline-sm": ["Manrope"],
+            "headline-lg": ["Manrope"],
+            "label-lg": ["Hanken Grotesk"],
+            "body-lg": ["Hanken Grotesk"],
+            "label-md": ["Hanken Grotesk"],
+            "headline-lg-mobile": ["Manrope"],
+            "headline-md": ["Manrope"],
+            "display-lg": ["Manrope"],
+            "title-md": ["Hanken Grotesk"],
+            "label-sm": ["Hanken Grotesk"],
+            "title-lg": ["Hanken Grotesk"],
+            "mono-timer": ["JetBrains Mono", "monospace"]
+          },
+          "fontSize": {
+            "body-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0", "fontWeight": "400" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "letterSpacing": "0", "fontWeight": "600" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0", "fontWeight": "400" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "headline-lg-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "display-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+            "title-md": ["16px", { "lineHeight": "24px", "letterSpacing": "0.005em", "fontWeight": "600" }],
+            "label-sm": ["10px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600" }],
+            "title-lg": ["18px", { "lineHeight": "26px", "letterSpacing": "0", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 20px;
+      line-height: 1;
+      display: inline-block;
+      white-space: nowrap;
+      word-wrap: normal;
+      direction: ltr;
+      -webkit-font-feature-settings: 'liga';
+      -webkit-font-smoothing: antialiased;
+    }
+
+    @keyframes liveGlow {
+      0%, 100% {
+        box-shadow: 0 0 10px rgba(220, 38, 38, 0.7), 0 0 22px rgba(220, 38, 38, 0.4);
+        transform: scale(1);
+      }
+      50% {
+        box-shadow: 0 0 18px rgba(220, 38, 38, 0.95), 0 0 32px rgba(220, 38, 38, 0.6);
+        transform: scale(1.12);
+      }
+    }
+
+    @keyframes concentricRipple {
+      0% {
+        transform: scale(0.9);
+        opacity: 0.9;
+      }
+      100% {
+        transform: scale(2.6);
+        opacity: 0;
+      }
+    }
+
+    .animate-live-glow {
+      animation: liveGlow 1.8s ease-in-out infinite;
+    }
+
+    .animate-concentric {
+      animation: concentricRipple 1.8s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+    }
+
+    /* Custom Glass Backdrop */
+    .glass-pill {
+      background: rgba(17, 19, 25, 0.88);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      box-shadow: 0 20px 45px -8px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(248, 250, 252, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    }
+
+    .glass-dock {
+      background: rgba(14, 16, 22, 0.78);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-slate-100 text-slate-900 font-body-md antialiased min-h-screen flex items-center justify-center p-0 select-none overflow-hidden">
+<!-- Mobile Screen Canvas Simulation -->
+<div class="relative w-full max-w-sm h-screen max-h-[860px] bg-slate-50 overflow-hidden flex flex-col shadow-2xl rounded-none sm:rounded-[44px] border border-slate-300">
+<!-- Realistic Subtle Mobile OS Desktop Background (Blurred & Dimmed) -->
+<div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+<!-- Ambient wallpaper gradient & abstract studio app canvas -->
+<div class="absolute inset-0 bg-gradient-to-br from-slate-100 via-gray-50 to-slate-200"></div>
+<!-- Subtle Mobile Status Bar -->
+<div class="relative z-10 w-full px-6 pt-3 pb-2 flex justify-between items-center text-slate-700 font-label-sm"><span class="font-headline-sm text-[13px] tracking-tight text-slate-900 font-semibold">9:41</span><div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[15px] text-slate-700" data-icon="signal_cellular_4_bar">signal_cellular_4_bar</span><span class="material-symbols-outlined text-[15px] text-slate-700" data-icon="wifi">wifi</span><div class="w-5 h-2.5 border border-slate-700 rounded-sm p-0.5 flex items-center"><div class="h-full w-3.5 bg-slate-800 rounded-xs"></div></div></div></div>
+<!-- Under-the-hood Mock App UI (Studio Audio / Video Tracker Background) -->
+<div class="p-space-md opacity-45 filter blur-[1.5px] scale-[0.99] transition-all"><div class="flex items-center justify-between mb-4"><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-white border border-slate-200 shadow-sm flex items-center justify-center text-red-600"><span class="material-symbols-outlined text-sm" data-icon="graphic_eq">graphic_eq</span></div><div><div class="h-3 w-28 bg-slate-300 rounded-full mb-1.5"></div><div class="h-2 w-16 bg-slate-200 rounded-full"></div></div></div><div class="w-7 h-7 rounded-full bg-white border border-slate-200 shadow-sm"></div></div><div class="h-32 bg-white rounded-xl p-3 border border-slate-200/80 shadow-sm flex items-end gap-1 mb-4"><div class="w-1 bg-red-200 h-8 rounded-full"></div><div class="w-1 bg-red-300 h-14 rounded-full"></div><div class="w-1 bg-red-400 h-20 rounded-full"></div><div class="w-1 bg-red-500 h-28 rounded-full"></div><div class="w-1 bg-red-400 h-18 rounded-full"></div><div class="w-1 bg-red-300 h-10 rounded-full"></div><div class="w-1 bg-red-200 h-14 rounded-full"></div><div class="w-1 bg-red-400 h-22 rounded-full"></div><div class="w-1 bg-red-300 h-16 rounded-full"></div><div class="w-1 bg-red-200 h-8 rounded-full"></div><div class="w-1 bg-red-300 h-12 rounded-full"></div><div class="w-1 bg-red-400 h-24 rounded-full"></div><div class="w-1 bg-red-500 h-20 rounded-full"></div><div class="w-1 bg-red-300 h-14 rounded-full"></div><div class="w-1 bg-red-200 h-6 rounded-full"></div><div class="w-1 bg-red-400 h-16 rounded-full"></div><div class="w-1 bg-red-500 h-24 rounded-full"></div><div class="w-1 bg-red-300 h-18 rounded-full"></div><div class="w-1 bg-red-200 h-10 rounded-full"></div><div class="w-1 bg-red-200 h-6 rounded-full"></div></div><div class="grid grid-cols-2 gap-3 mb-4"><div class="h-20 bg-white rounded-xl p-3 border border-slate-200 shadow-sm"><div class="h-2 w-14 bg-slate-200 rounded mb-2"></div><div class="h-4 w-20 bg-slate-300 rounded"></div></div><div class="h-20 bg-white rounded-xl p-3 border border-slate-200 shadow-sm"><div class="h-2 w-14 bg-slate-200 rounded mb-2"></div><div class="h-4 w-20 bg-slate-300 rounded"></div></div></div><div class="space-y-2.5"><div class="h-12 bg-white rounded-lg flex items-center px-3 gap-3 border border-slate-200 shadow-sm"><div class="w-6 h-6 rounded bg-slate-200"></div><div class="h-2.5 w-36 bg-slate-200 rounded"></div></div><div class="h-12 bg-white rounded-lg flex items-center px-3 gap-3 border border-slate-200 shadow-sm"><div class="w-6 h-6 rounded bg-slate-200"></div><div class="h-2.5 w-44 bg-slate-200 rounded"></div></div><div class="h-12 bg-white rounded-lg flex items-center px-3 gap-3 border border-slate-200 shadow-sm"><div class="w-6 h-6 rounded bg-slate-200"></div><div class="h-2.5 w-28 bg-slate-200 rounded"></div></div></div></div>
+</div>
+<!-- Active Recording Screen Border Glow (Signaling screen capture in progress) -->
+<div class="absolute inset-0 pointer-events-none z-10 border-2 border-red-500/40 shadow-[inset_0_0_24px_rgba(220,38,38,0.15)]"></div>
+<!-- MAIN FOREGROUND: Floating Pill-Shaped Screen Recording Widget & Anchors -->
+<div class="relative z-30 flex-1 flex flex-col justify-center items-center px-margin-compact pb-12">
+<!-- Upper Floating Telemetry & System Status Dock (Docked neatly right above main pill) -->
+<div class="flex items-center gap-2 mb-3.5 animate-fadeIn"><div class="bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-full flex items-center gap-2 border border-slate-200/90 shadow-md"><span class="w-2 h-2 rounded-full bg-red-600 animate-ping"></span><span class="text-label-sm font-label-sm uppercase tracking-wider text-slate-900 font-semibold text-[11px]">REC • 1080p 60fps</span><span class="text-slate-300">•</span><div class="flex items-center gap-1 text-slate-600 text-[11px]"><span class="material-symbols-outlined text-[13px] text-slate-500" data-icon="mic">mic</span><span class="text-label-sm font-label-sm text-slate-700 font-medium">48kHz</span></div></div><button class="bg-white/90 backdrop-blur-md w-7 h-7 rounded-full flex items-center justify-center text-slate-600 hover:text-slate-900 hover:bg-slate-100 border border-slate-200/90 shadow-sm transition-all duration-150 active:scale-95" id="minimizeBtn" title="Dock Overlay to Edge"><span class="material-symbols-outlined text-[16px]" data-icon="fullscreen_exit">fullscreen_exit</span></button></div>
+<!-- THE FLOATING PILL-SHAPED OVERLAY WIDGET -->
+<div class="w-full max-w-[344px] rounded-full px-space-sm py-2.5 flex items-center justify-between transition-all duration-200 cursor-grab active:cursor-grabbing bg-white/95 backdrop-blur-xl border border-slate-200/90 shadow-2xl group ring-1 ring-black/5" id="floatingWidget"><div class="flex items-center pl-1.5 pr-2.5 gap-2.5 border-r border-slate-200 select-none"><div class="flex flex-col gap-0.5 opacity-50 hover:opacity-90 transition-opacity"><span class="w-1 h-1 rounded-full bg-slate-800"></span><span class="w-1 h-1 rounded-full bg-slate-800"></span><span class="w-1 h-1 rounded-full bg-slate-800"></span></div><div class="relative flex items-center justify-center w-5 h-5"><span class="absolute w-3 h-3 rounded-full bg-red-500 animate-concentric pointer-events-none"></span><span class="relative w-2.5 h-2.5 rounded-full bg-red-600 animate-live-glow"></span></div><div class="flex flex-col"><span class="font-mono-timer text-[13px] font-bold text-slate-900 tracking-tight tabular-nums leading-none" id="recordTimer">00:12:37</span><span class="text-[9px] font-label-sm text-slate-500 tracking-wider uppercase leading-tight mt-0.5 font-medium">Recording</span></div></div><div class="flex items-center gap-1.5 pl-1"><button aria-label="Pause Recording" class="relative group/btn w-9 h-9 rounded-full flex items-center justify-center bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 border border-slate-200/80 transition-all duration-150 active:scale-90" id="pauseToggleBtn"><span class="material-symbols-outlined text-[19px]" data-icon="pause" id="pauseIcon">pause</span><span class="pointer-events-none absolute -bottom-8 opacity-0 group-hover/btn:opacity-100 transition-opacity text-[10px] font-label-sm bg-slate-800 px-2 py-0.5 rounded text-white whitespace-nowrap shadow-md">Pause</span></button><button aria-label="Toggle Microphone" class="relative group/btn w-9 h-9 rounded-full flex items-center justify-center bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 border border-slate-200/80 transition-all duration-150 active:scale-90" id="micToggleBtn"><span class="material-symbols-outlined text-[19px]" data-icon="mic" id="micIcon">mic</span><span class="absolute top-1.5 right-1.5 w-1.5 h-1.5 rounded-full bg-red-600" id="micPip"></span><span class="pointer-events-none absolute -bottom-8 opacity-0 group-hover/btn:opacity-100 transition-opacity text-[10px] font-label-sm bg-slate-800 px-2 py-0.5 rounded text-white whitespace-nowrap shadow-md">Mic On</span></button><button aria-label="Toggle Facecam" class="relative group/btn w-9 h-9 rounded-full flex items-center justify-center bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 border border-slate-200/80 transition-all duration-150 active:scale-90" id="camToggleBtn"><span class="material-symbols-outlined text-[19px]" data-icon="videocam" id="camIcon">videocam</span><span class="pointer-events-none absolute -bottom-8 opacity-0 group-hover/btn:opacity-100 transition-opacity text-[10px] font-label-sm bg-slate-800 px-2 py-0.5 rounded text-white whitespace-nowrap shadow-md">Camera</span></button><button aria-label="Stop Recording" class="relative group/btn w-9 h-9 rounded-full flex items-center justify-center bg-red-600 text-white hover:bg-red-700 active:scale-90 transition-all duration-150 shadow-[0_0_14px_rgba(220,38,38,0.45)]" id="stopRecordBtn"><span class="material-symbols-outlined text-[18px] text-white" data-icon="stop" style="font-variation-settings: 'FILL' 1;">stop</span><span class="pointer-events-none absolute -bottom-8 opacity-0 group-hover/btn:opacity-100 transition-opacity text-[10px] font-label-sm bg-red-800 text-white px-2 py-0.5 rounded whitespace-nowrap shadow-md">Stop &amp; Save</span></button></div></div>
+<!-- Quick Audio Peak Telemetry Meter Segment (Attached beneath pill) -->
+<div class="mt-2.5 flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/90 border border-slate-200/90 text-[10px] font-label-sm backdrop-blur-sm shadow-sm"><span class="text-[10px] text-slate-700 font-semibold">L/R Audio</span><div class="flex items-center gap-0.5"><span class="w-1.5 h-2 rounded-xs bg-emerald-500"></span><span class="w-1.5 h-2.5 rounded-xs bg-emerald-500"></span><span class="w-1.5 h-3.5 rounded-xs bg-emerald-500"></span><span class="w-1.5 h-4 rounded-xs bg-emerald-500"></span><span class="w-1.5 h-3 rounded-xs bg-emerald-400"></span><span class="w-1.5 h-2 rounded-xs bg-amber-400"></span><span class="w-1.5 h-1.5 rounded-xs bg-amber-300"></span><span class="w-1.5 h-1 rounded-xs bg-red-400"></span></div><span class="text-[10px] text-slate-800 font-mono-timer font-semibold">-12dB</span></div>
+<!-- User Hint Guidance Notice -->
+<div class="mt-6 flex items-center gap-1.5 text-slate-500 text-[11px] font-medium"><span class="material-symbols-outlined text-[14px] text-slate-500" data-icon="drag_indicator">drag_indicator</span><span>Drag pill to relocate anywhere on screen</span></div>
+</div>
+<!-- Active Floating Facecam Mock Preview (PiP circle in bottom corner of screen) -->
+<div class="absolute bottom-16 right-4 z-20 w-16 h-16 rounded-full border-2 border-red-500/80 shadow-xl overflow-hidden bg-white flex items-center justify-center group ring-2 ring-white"><div class="w-full h-full bg-gradient-to-tr from-slate-100 to-slate-200 flex flex-col items-center justify-center relative"><span class="material-symbols-outlined text-slate-700 text-[24px]" data-icon="person">person</span><div class="absolute bottom-0 w-full bg-red-600 text-center py-0.2 text-[8px] font-label-sm text-white tracking-widest uppercase font-bold">PiP</div></div></div>
+<!-- Mobile Home Bar Indicator -->
+<div class="relative z-30 pb-3 w-full flex justify-center pointer-events-none">
+<div class="w-32 h-1 bg-slate-300 rounded-full"></div>
+</div>
+</div>
+<!-- Interactive JavaScript Logic -->
+<script>
+    // Live Recording Timer Simulation
+    let secondsElapsed = 755; // 00:12:35
+    let isPaused = false;
+    const timerElem = document.getElementById('recordTimer');
+    const pauseToggleBtn = document.getElementById('pauseToggleBtn');
+    const pauseIcon = document.getElementById('pauseIcon');
+
+    setInterval(() => {
+      if (!isPaused) {
+        secondsElapsed++;
+        const hrs = String(Math.floor(secondsElapsed / 3600)).padStart(2, '0');
+        const mins = String(Math.floor((secondsElapsed % 3600) / 60)).padStart(2, '0');
+        const secs = String(secondsElapsed % 60).padStart(2, '0');
+        timerElem.textContent = `${hrs}:${mins}:${secs}`;
+      }
+    }, 1000);
+
+    // Pause / Resume Toggle Action
+    pauseToggleBtn.addEventListener('click', () => {
+      isPaused = !isPaused;
+      if (isPaused) {
+        pauseIcon.textContent = 'play_arrow';
+        pauseToggleBtn.classList.add('text-primary-container');
+        timerElem.classList.add('opacity-40');
+      } else {
+        pauseIcon.textContent = 'pause';
+        pauseToggleBtn.classList.remove('text-primary-container');
+        timerElem.classList.remove('opacity-40');
+      }
+    });
+
+    // Mic Toggle Action
+    const micToggleBtn = document.getElementById('micToggleBtn');
+    const micIcon = document.getElementById('micIcon');
+    const micPip = document.getElementById('micPip');
+    let micActive = true;
+
+    micToggleBtn.addEventListener('click', () => {
+      micActive = !micActive;
+      if (micActive) {
+        micIcon.textContent = 'mic';
+        micToggleBtn.classList.add('bg-secondary-container', 'text-primary-container');
+        micToggleBtn.classList.remove('bg-surface-container-high/80', 'text-on-surface-variant');
+        micPip.classList.remove('hidden');
+      } else {
+        micIcon.textContent = 'mic_off';
+        micToggleBtn.classList.remove('bg-secondary-container', 'text-primary-container');
+        micToggleBtn.classList.add('bg-surface-container-high/80', 'text-on-surface-variant');
+        micPip.classList.add('hidden');
+      }
+    });
+
+    // Stop Recording Feedback Interaction
+    const stopRecordBtn = document.getElementById('stopRecordBtn');
+    stopRecordBtn.addEventListener('click', () => {
+      isPaused = true;
+      const originalText = timerElem.textContent;
+      timerElem.textContent = "SAVED";
+      timerElem.classList.add('text-primary');
+      setTimeout(() => {
+        timerElem.textContent = originalText;
+        timerElem.classList.remove('text-primary');
+        isPaused = false;
+      }, 1500);
+    });
+  </script>
+</body></html>
+
+9 .Recording Completed Screen :

@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Consolidated Screen Recorder - My Recordings</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Manrope & Hanken Grotesk -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300..800;1,300..800&amp;family=Manrope:wght@400..800&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "primary-container": "#dc2626",
+            "on-primary-container": "#ffffff",
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin": "1.25rem",
+            "space-xs": "0.25rem",
+            "gutter-sm": "0.75rem",
+            "space-lg": "1.5rem",
+            "margin-compact": "1rem",
+            "space-xl": "2rem",
+            "space-md": "1rem",
+            "gutter": "1rem",
+            "space-sm": "0.5rem"
+          },
+          "fontFamily": {
+            "label-sm": ["Hanken Grotesk"],
+            "title-lg": ["Hanken Grotesk"],
+            "display-lg": ["Manrope"],
+            "body-sm": ["Hanken Grotesk"],
+            "label-lg": ["Hanken Grotesk"],
+            "headline-md": ["Manrope"],
+            "title-md": ["Hanken Grotesk"],
+            "headline-lg": ["Manrope"],
+            "headline-lg-mobile": ["Manrope"],
+            "body-md": ["Hanken Grotesk"],
+            "body-lg": ["Hanken Grotesk"],
+            "label-md": ["Hanken Grotesk"],
+            "headline-sm": ["Manrope"]
+          },
+          "fontSize": {
+            "label-sm": ["10px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600" }],
+            "title-lg": ["18px", { "lineHeight": "26px", "letterSpacing": "0", "fontWeight": "600" }],
+            "display-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+            "body-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "title-md": ["16px", { "lineHeight": "24px", "letterSpacing": "0.005em", "fontWeight": "600" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "headline-lg-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0", "fontWeight": "400" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0", "fontWeight": "400" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "letterSpacing": "0", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 20px;
+      line-height: 1;
+      display: inline-block;
+      white-space: nowrap;
+      word-wrap: normal;
+      direction: ltr;
+      -webkit-font-feature-settings: 'liga';
+      -webkit-font-smoothing: antialiased;
+    }
+    .active-capture-glow {
+      box-shadow: 0 4px 18px rgba(220, 38, 38, 0.35);
+    }
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-[#F8F9FA] text-[#111827] min-h-screen pb-28 antialiased selection:bg-red-500 selection:text-white">
+<!-- Mobile Wrapper Container -->
+<div class="max-w-md mx-auto min-h-screen relative flex flex-col bg-[#F8F9FA]">
+<!-- Top App Bar & Header Section -->
+<header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md px-margin-compact pt-space-md pb-space-sm border-b border-gray-100 shadow-[0_1px_3px_rgba(0,0,0,0.03)]">
+<div class="flex items-center justify-between">
+<!-- Leading Action -->
+<button class="w-10 h-10 rounded-full flex items-center justify-center bg-gray-100 text-[#1F2937] hover:bg-gray-200 active:scale-95 transition-all">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<!-- Center Identity -->
+<div class="flex flex-col items-center">
+<h1 class="font-headline-sm text-headline-sm font-bold tracking-tight text-[#111827]">My Recordings</h1>
+<span class="font-label-sm text-label-sm text-[#6B7280] flex items-center gap-1.5 mt-0.5">
+<span class="w-1.5 h-1.5 rounded-full bg-red-600 animate-pulse"></span>
+            24 files • 3.8 GB
+          </span>
+</div>
+<!-- Trailing Actions -->
+<div class="flex items-center gap-1">
+<button class="w-10 h-10 rounded-full flex items-center justify-center bg-gray-100 text-[#1F2937] hover:bg-gray-200 active:scale-95 transition-all relative" title="Vault &amp; Cloud Sync">
+<span class="material-symbols-outlined" data-icon="cloud_done">cloud_done</span>
+<span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-red-600"></span>
+</button>
+<button class="w-10 h-10 rounded-full flex items-center justify-center bg-gray-100 text-[#1F2937] hover:bg-gray-200 active:scale-95 transition-all" title="Filter / Checklist">
+<span class="material-symbols-outlined" data-icon="tune">tune</span>
+</button>
+</div>
+</div>
+<!-- Category Filter Tabs -->
+<div class="flex items-center gap-2 mt-space-md overflow-x-auto no-scrollbar py-0.5">
+<!-- Active Pill -->
+<button class="flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-red-600 text-white font-label-md text-label-md active-capture-glow transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="auto_awesome">auto_awesome</span>
+<span class="font-semibold">All</span>
+<span class="text-[10px] bg-white/25 px-1.5 py-0.2 rounded-full ml-0.5 font-bold">24</span>
+</button>
+<!-- Inactive Pills -->
+<button class="flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#E5E7EB]/80 text-[#374151] hover:bg-gray-200 hover:text-[#111827] font-label-md text-label-md transition-all font-medium">
+<span class="material-symbols-outlined text-sm text-[#4B5563]" data-icon="videocam">videocam</span>
+<span>Videos</span>
+<span class="text-[10px] text-[#6B7280] font-semibold">16</span>
+</button>
+<button class="flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#E5E7EB]/80 text-[#374151] hover:bg-gray-200 hover:text-[#111827] font-label-md text-label-md transition-all font-medium">
+<span class="material-symbols-outlined text-sm text-[#4B5563]" data-icon="screenshot_monitor">screenshot_monitor</span>
+<span>Screenshots</span>
+<span class="text-[10px] text-[#6B7280] font-semibold">5</span>
+</button>
+<button class="flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#E5E7EB]/80 text-[#374151] hover:bg-gray-200 hover:text-[#111827] font-label-md text-label-md transition-all font-medium">
+<span class="material-symbols-outlined text-sm text-[#4B5563]" data-icon="gif_box">gif_box</span>
+<span>GIFs</span>
+<span class="text-[10px] text-[#6B7280] font-semibold">3</span>
+</button>
+</div>
+<!-- Search & Filters Control Bar -->
+<div class="flex items-center gap-2 mt-space-sm pt-space-xs">
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[#9CA3AF] text-lg pointer-events-none" data-icon="search">search</span>
+<input class="w-full bg-white text-[#111827] placeholder:text-[#9CA3AF] font-body-sm text-body-sm pl-9 pr-8 py-2 rounded-full border border-gray-200 shadow-sm focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600 transition-all" placeholder="Search recordings by name, date..." type="text"/>
+<button class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 text-base" data-icon="cancel">cancel</button>
+</div>
+<!-- Sort Trigger Dropdown/Pill -->
+<button class="flex items-center gap-1 px-3 py-2 rounded-full bg-white text-[#374151] border border-gray-200 shadow-sm font-label-sm text-label-sm hover:bg-gray-50 active:scale-95 transition-all whitespace-nowrap">
+<span class="material-symbols-outlined text-sm text-[#4B5563]" data-icon="swap_vert">swap_vert</span>
+<span class="font-medium">Date</span>
+</button>
+<!-- View Switch Toggle -->
+<div class="flex items-center bg-white p-0.5 rounded-full border border-gray-200 shadow-sm">
+<button class="w-7 h-7 rounded-full bg-red-50 text-red-600 flex items-center justify-center">
+<span class="material-symbols-outlined text-base" data-icon="grid_view">grid_view</span>
+</button>
+<button class="w-7 h-7 rounded-full text-gray-400 hover:text-gray-700 flex items-center justify-center">
+<span class="material-symbols-outlined text-base" data-icon="view_agenda">view_agenda</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas: Media Grid -->
+<main class="flex-1 px-margin-compact pt-space-sm pb-space-lg">
+<!-- Telemetry Quick Banner -->
+<div class="mb-space-md p-space-sm bg-white rounded-xl flex items-center justify-between border border-gray-200/80 shadow-sm">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-red-50 text-red-600 flex items-center justify-center">
+<span class="material-symbols-outlined text-lg" data-icon="folder_special">folder_special</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-[#111827] font-bold">Local Storage Allocation</span>
+<span class="font-body-sm text-body-sm text-[#6B7280]">3.8 GB / 128 GB used (3%)</span>
+</div>
+</div>
+<button class="text-red-600 font-label-sm text-label-sm font-semibold flex items-center gap-0.5 hover:underline">
+<span>Manage</span>
+<span class="material-symbols-outlined text-xs" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<!-- 2-Column Responsive Media Grid -->
+<div class="grid grid-cols-2 gap-3">
+<!-- Card 1: Gameplay Capture Video -->
+<div class="group bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-md hover:border-red-300 transition-all duration-200 flex flex-col">
+<!-- Thumbnail Container -->
+<div class="relative w-full aspect-video bg-gray-900 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="A high adrenaline, cinematic video game frame featuring futuristic cybernetic racing cars speeding through a rain-slicked dark obsidian metropolis. Neon scarlet red and icy blue light streaks illuminate the detailed dark asphalt and sharp metallic vehicle chassis. The composition conveys speed and precision with studio grade production lighting and deep slate contrast." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRdV4NRfQPikmp9ZmsA3ssa5IEu9ZH-cayfgNKu3_GYz5y4gKJE4vkLTRG_mOpw9gE4DwhXsBDPRxSEVYkKc09aKVprAxvDdrN3tfl3xeP1eTDY3dGWkY9pI7ckHHFsmhf2VkPA1yXKsHyYes-qerCp0cdh3qrNa_VY-yJddlI8EDdC2FxFCNg1esJeHqBm9ZevIjNZkZqcUvHee2UeIMlu4OmXoh7TcWqd1uf9xgP_9CI0dMpkWVE0A"/>
+<!-- Overlay Elements -->
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30"></div>
+<!-- Duration Badge -->
+<div class="absolute bottom-2 right-2 px-1.5 py-0.5 rounded-md bg-black/75 backdrop-blur-md text-white font-label-sm text-label-sm tracking-wider flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-red-500"></span>
+              12:37
+            </div>
+<!-- Quality Badge -->
+<div class="absolute top-2 left-2 px-1.5 py-0.5 rounded-md bg-black/60 backdrop-blur-md text-white font-label-sm text-label-sm font-medium">
+              1080p
+            </div>
+<!-- Play Indicator -->
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-8 h-8 rounded-full bg-red-600 text-white flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-base leading-none" data-icon="play_arrow" data-weight="fill">play_arrow</span>
+</div>
+</div>
+</div>
+<!-- Card Metadata -->
+<div class="p-space-sm flex flex-col justify-between flex-1 bg-white">
+<div>
+<div class="flex items-start justify-between gap-1">
+<h2 class="font-headline-sm text-sm font-bold text-[#111827] truncate" title="SCR_20250518_Gameplay.mp4">SCR_20250518_Gameplay.mp4</h2>
+<button class="text-[#6B7280] hover:text-[#111827] p-0.5 -mr-1">
+<span class="material-symbols-outlined text-base" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+<p class="font-body-sm text-body-sm text-[#6B7280] mt-0.5 font-medium">May 18 • 148.4 MB</p>
+</div>
+</div>
+</div>
+<!-- Card 2: App Tutorial Demo Video -->
+<div class="group bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-md hover:border-red-300 transition-all duration-200 flex flex-col">
+<div class="relative w-full aspect-video bg-gray-900 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="A modern mobile UI software application interface screenshot glowing on a dark studio screen mockup. Visual analytics graphs and glowing red telemetry nodes rest on an obsidian dark slate background with sharp high-contrast accents. The lighting is pristine, high tech, and minimalist, emphasizing software productivity and engineering design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSQ8P4-y39kpSOKTNJ7cxlKfshPiEs8rOmf56zmuT-nSdkP9WC5Jig0MSly9kYmWuTrUhwqEdnBX26GW44NE4TwLtku4U0EK3Fj9Z79dyqq7UuhQlNMJv6q97EuYJzwZ03HYo0l04os2tEVMOq03-psJAEqyslsHGSvjkYupIbO4h7_78jVU0-fuPbi_eQSZu0VDOueeC_jkhH04QrINU4xZbqAhuqNWZ31AgR9n1Q3iZbmopXU-MnpQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30"></div>
+<div class="absolute bottom-2 right-2 px-1.5 py-0.5 rounded-md bg-black/75 backdrop-blur-md text-white font-label-sm text-label-sm tracking-wider flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-red-500"></span>
+              04:15
+            </div>
+<div class="absolute top-2 left-2 px-1.5 py-0.5 rounded-md bg-black/60 backdrop-blur-md text-white font-label-sm text-label-sm font-medium">
+              60 FPS
+            </div>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-8 h-8 rounded-full bg-black/60 text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-base leading-none" data-icon="play_arrow" data-weight="fill">play_arrow</span>
+</div>
+</div>
+</div>
+<div class="p-space-sm flex flex-col justify-between flex-1 bg-white">
+<div>
+<div class="flex items-start justify-between gap-1">
+<h2 class="font-headline-sm text-sm font-bold text-[#111827] truncate" title="Tutorial_Onboarding_Demo.mp4">Tutorial_Onboarding_Demo.mp4</h2>
+<button class="text-[#6B7280] hover:text-[#111827] p-0.5 -mr-1">
+<span class="material-symbols-outlined text-base" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+<p class="font-body-sm text-body-sm text-[#6B7280] mt-0.5 font-medium">May 17 • 52.1 MB</p>
+</div>
+</div>
+</div>
+<!-- Card 3: Screenshot Image Capture -->
+<div class="group bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-md hover:border-red-300 transition-all duration-200 flex flex-col">
+<div class="relative w-full aspect-video bg-gray-900 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="A sharp technical diagnostic bug report screenshot displaying complex stack traces and telemetry error charts over a dark mode UI. Deep graphite background with highlighted ruby-red debug callouts and crisp white monospace typography. Clean vector framing and pro-grade engineering aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCs-I1yMFv261AR2a9AK-KKXdUJ6MkRGn9AkA9c_uf0-YfgNh9wjbhHjBKhOqkk7s0PJ4_TdYl5c7r0D7CuzkD-OzpQXW7gQpNrQ4vbfrTzdXFTwzyg70nntKqJWbPfoZ6_TYbkGL5IAG-vu4AKARhU2iAR1b5g8ia6db-6uLyrlySxF6fVuylXVhnjEwWylg-EvjvcY30hBt1IEDowenXHwJC8o9TVNv3BO5ErFZAZgWEpBSPrwGYySg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30"></div>
+<!-- Type Icon badge -->
+<div class="absolute top-2 left-2 px-1.5 py-0.5 rounded-md bg-blue-600/90 text-white font-label-sm text-label-sm font-medium">
+              PNG • 1440p
+            </div>
+<div class="absolute bottom-2 right-2 p-1 rounded-md bg-black/75 backdrop-blur-md text-white">
+<span class="material-symbols-outlined text-xs" data-icon="image">image</span>
+</div>
+</div>
+<div class="p-space-sm flex flex-col justify-between flex-1 bg-white">
+<div>
+<div class="flex items-start justify-between gap-1">
+<h2 class="font-headline-sm text-sm font-bold text-[#111827] truncate" title="BugReport_Frame_01.png">BugReport_Frame_01.png</h2>
+<button class="text-[#6B7280] hover:text-[#111827] p-0.5 -mr-1">
+<span class="material-symbols-outlined text-base" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+<p class="font-body-sm text-body-sm text-[#6B7280] mt-0.5 font-medium">May 16 • 4.2 MB</p>
+</div>
+</div>
+</div>
+<!-- Card 4: GIF Animation Recording -->
+<div class="group bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-md hover:border-red-300 transition-all duration-200 flex flex-col">
+<div class="relative w-full aspect-video bg-gray-900 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="A playful animated 3D character reaction render captured in an endless loop, showcasing a stylized robotic mascot celebrating with fiery crimson particles in an obsidian dark room. Sleek polished metals, volumetric rim lighting, and vibrant scarlet tones provide an expressive, tech-forward creator studio vibe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNagAYJTWwEOLccUtAujzU8JY2Mp0ygmqmaPBfKywclILdAvW7zSueMxIocxz-ejJuGnqLr1eANlKGt3R9veYYzeb9pqB7es-WEkiDHeuIest5ht2YrH94BHiJmfBRlb5DZx0ctyf44nOcnuWwGsrjuW0-0UUjW_Jqwy2l7N97aLgaaF0yt5wY3cilILJIuaOQvV4DczNflVjOrtytHxEjtDFn2Hetw02ROeVTnqE15AtNXxx8Mz27YQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30"></div>
+<div class="absolute top-2 left-2 px-1.5 py-0.5 rounded-md bg-red-600 text-white font-label-sm text-label-sm font-semibold">
+              GIF • 15 FPS
+            </div>
+<div class="absolute bottom-2 right-2 px-1.5 py-0.5 rounded-md bg-black/75 backdrop-blur-md text-white font-label-sm text-label-sm tracking-wider">
+              00:06
+            </div>
+</div>
+<div class="p-space-sm flex flex-col justify-between flex-1 bg-white">
+<div>
+<div class="flex items-start justify-between gap-1">
+<h2 class="font-headline-sm text-sm font-bold text-[#111827] truncate" title="Reaction_Meme_Clip.gif">Reaction_Meme_Clip.gif</h2>
+<button class="text-[#6B7280] hover:text-[#111827] p-0.5 -mr-1">
+<span class="material-symbols-outlined text-base" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+<p class="font-body-sm text-body-sm text-[#6B7280] mt-0.5 font-medium">May 15 • 8.6 MB</p>
+</div>
+</div>
+</div>
+<!-- Card 5: Meeting / Voice Presentation -->
+<div class="group bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-md hover:border-red-300 transition-all duration-200 flex flex-col">
+<div class="relative w-full aspect-video bg-gray-900 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="A split-screen virtual collaborative design presentation recording showing wireframes and architectural flowcharts on a dark mode canvas. Speaker video feeds in rounded floating PIP windows. The atmosphere is professional, technical, and elegant with deep charcoal tones and refined crimson status nodes." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4TLTE2xCRVHDVke3T8KkHusqimHa56GPHRGN1yCm4U_UCnDkLF4Dd9C3FqhoMKndKf0i5as0hMtfce0rNMWzoObu5lgbepSSzBtL11oIeyyf1SHzzjPgbQe7IagHdtJoj45qzjTaiUo2DYMWDRHdSadvDML9Sw-fSBnQjBB8Hnij7Xv7DD8Hw3eXvQt8Vthz-UtK5Gw8uebU-ec8hrIS_PXynfZuViKhdnc8O-vms_fDHctW_xy8Udg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30"></div>
+<div class="absolute bottom-2 right-2 px-1.5 py-0.5 rounded-md bg-black/75 backdrop-blur-md text-white font-label-sm text-label-sm tracking-wider flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-red-500"></span>
+              28:40
+            </div>
+<div class="absolute top-2 left-2 px-1.5 py-0.5 rounded-md bg-black/60 backdrop-blur-md text-white font-label-sm text-label-sm flex items-center gap-1 font-medium">
+<span class="material-symbols-outlined text-xs" data-icon="mic">mic</span>
+              Dual Audio
+            </div>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-8 h-8 rounded-full bg-black/60 text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-base leading-none" data-icon="play_arrow" data-weight="fill">play_arrow</span>
+</div>
+</div>
+</div>
+<div class="p-space-sm flex flex-col justify-between flex-1 bg-white">
+<div>
+<div class="flex items-start justify-between gap-1">
+<h2 class="font-headline-sm text-sm font-bold text-[#111827] truncate" title="Design_Sync_Review.mp4">Design_Sync_Review.mp4</h2>
+<button class="text-[#6B7280] hover:text-[#111827] p-0.5 -mr-1">
+<span class="material-symbols-outlined text-base" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+<p class="font-body-sm text-body-sm text-[#6B7280] mt-0.5 font-medium">May 14 • 310.8 MB</p>
+</div>
+</div>
+</div>
+<!-- Card 6: Benchmark Test Run -->
+<div class="group bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-md hover:border-red-300 transition-all duration-200 flex flex-col">
+<div class="relative w-full aspect-video bg-gray-900 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="A 3D GPU performance benchmark demo scene rendering an intricate fractal engine with swirling obsidian crystal formations and pulsating crimson lasers. Extreme detail, high framerate visual cues, dark cosmic aesthetic with razor sharp specular reflections." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDh3MmA5iTatuNoAByi-_Sru3UlFQo5OGZZ9UbO1GtSzwJILK2xiCodAtgbr6jyhZZJN8wjY4IB8eJOhzsDJKX7BnMFIGW-yyevi008aslpEwWN203-ApTsLSxX_VxRYbACSZ7jNJJCxtDm8Fr-OVhfcQXlhrPy-hbDQCJSqwToSvVjHVqAg3iXj1LKINXoTJGqocxKK5I-drwaaexWHY4knGytEzNI-cxBpK5ZVudFTZdppgrTxl3aw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30"></div>
+<div class="absolute bottom-2 right-2 px-1.5 py-0.5 rounded-md bg-black/75 backdrop-blur-md text-white font-label-sm text-label-sm tracking-wider flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-red-500"></span>
+              01:50
+            </div>
+<div class="absolute top-2 left-2 px-1.5 py-0.5 rounded-md bg-red-600 text-white font-label-sm text-label-sm font-bold">
+              4K 60FPS
+            </div>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-8 h-8 rounded-full bg-black/60 text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-base leading-none" data-icon="play_arrow" data-weight="fill">play_arrow</span>
+</div>
+</div>
+</div>
+<div class="p-space-sm flex flex-col justify-between flex-1 bg-white">
+<div>
+<div class="flex items-start justify-between gap-1">
+<h2 class="font-headline-sm text-sm font-bold text-[#111827] truncate" title="Speedtest_Benchmark.mp4">Speedtest_Benchmark.mp4</h2>
+<button class="text-[#6B7280] hover:text-[#111827] p-0.5 -mr-1">
+<span class="material-symbols-outlined text-base" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+<p class="font-body-sm text-body-sm text-[#6B7280] mt-0.5 font-medium">May 12 • 94.0 MB</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Quick Action Floating Capsule: Record Trigger -->
+<div class="mt-space-lg flex justify-center">
+<button class="flex items-center gap-2 px-6 py-3 rounded-full bg-red-600 text-white active-capture-glow active:scale-95 transition-all font-label-lg text-label-lg shadow-lg hover:bg-red-700">
+<span class="w-3 h-3 rounded-full bg-white animate-ping"></span>
+<span class="font-bold tracking-tight">Start Instant Capture</span>
+</button>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Clean light dock with active lock on 'Recordings') -->
+<nav class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-md z-50 flex justify-around items-center px-margin-compact py-space-xs pb-safe bg-white border-t border-gray-200 shadow-lg">
+<!-- Nav Item 1: Home (Inactive) -->
+<a class="flex flex-col items-center justify-center text-[#6B7280] px-space-md py-space-xs hover:text-[#111827] active:scale-95 transition-all duration-100" href="#">
+<span class="material-symbols-outlined" data-icon="videocam">videocam</span>
+<span class="font-label-sm text-label-sm mt-0.5">Home</span>
+</a>
+<!-- Nav Item 2: Recordings (ACTIVE ITEM as mandated) -->
+<a class="flex flex-col items-center justify-center bg-red-50 text-red-600 rounded-full px- space-md px-4 py-1.5 active:scale-95 transition-all duration-100" href="#">
+<span class="material-symbols-outlined" data-icon="folder_open" data-weight="fill">folder_open</span>
+<span class="font-label-sm text-label-sm font-semibold mt-0.5">Recordings</span>
+</a>
+<!-- Nav Item 3: Tools (Inactive) -->
+<a class="flex flex-col items-center justify-center text-[#6B7280] px-space-md py-space-xs hover:text-[#111827] active:scale-95 transition-all duration-100" href="#">
+<span class="material-symbols-outlined" data-icon="auto_fix_high">auto_fix_high</span>
+<span class="font-label-sm text-label-sm mt-0.5">Tools</span>
+</a>
+<!-- Nav Item 4: Settings (Inactive) -->
+<a class="flex flex-col items-center justify-center text-[#6B7280] px-space-md py-space-xs hover:text-[#111827] active:scale-95 transition-all duration-100" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-sm text-label-sm mt-0.5">Settings</span>
+</a>
+</nav>
+</div>
+</body></html>
+
+11 . Video Player Screen :

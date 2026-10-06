@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Recording Settings - Consolidated Screen Recorder</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Manrope & Hanken Grotesk -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300..900;1,300..900&amp;family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS with Forms & Container Queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "primary-container": "#dc2626",
+            "tertiary-container": "#b91c1c",
+            "on-primary-container": "#ffffff",
+            "surface": "#ffffff",
+            "surface-container-lowest": "#f8f9fa",
+            "surface-container-low": "#f3f4f6",
+            "surface-container": "#ffffff",
+            "surface-container-high": "#e5e7eb",
+            "surface-container-highest": "#d1d5db",
+            "on-surface": "#111827",
+            "secondary": "#4b5563",
+            "on-surface-variant": "#6b7280",
+            "outline-variant": "#e5e7eb"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "1.25rem",
+            "xl": "2rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin-compact": "1rem",
+            "space-md": "1rem",
+            "space-lg": "1.5rem",
+            "gutter": "1rem",
+            "margin": "1.25rem",
+            "space-sm": "0.5rem",
+            "space-xs": "0.25rem",
+            "gutter-sm": "0.75rem",
+            "space-xl": "2rem"
+          },
+          "fontFamily": {
+            "headline-lg-mobile": ["Manrope"],
+            "headline-lg": ["Manrope"],
+            "title-md": ["Hanken Grotesk"],
+            "display-lg": ["Manrope"],
+            "label-md": ["Hanken Grotesk"],
+            "headline-sm": ["Manrope"],
+            "headline-md": ["Manrope"],
+            "label-sm": ["Hanken Grotesk"],
+            "body-lg": ["Hanken Grotesk"],
+            "body-md": ["Hanken Grotesk"],
+            "label-lg": ["Hanken Grotesk"],
+            "body-sm": ["Hanken Grotesk"],
+            "title-lg": ["Hanken Grotesk"]
+          },
+          "fontSize": {
+            "headline-lg-mobile": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+            "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.015em", "fontWeight": "700"}],
+            "title-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0.005em", "fontWeight": "600"}],
+            "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+            "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+            "headline-sm": ["20px", {"lineHeight": "28px", "letterSpacing": "0", "fontWeight": "600"}],
+            "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "label-sm": ["10px", {"lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600"}],
+            "body-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "0", "fontWeight": "400"}],
+            "body-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0", "fontWeight": "400"}],
+            "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+            "body-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "400"}],
+            "title-lg": ["18px", {"lineHeight": "26px", "letterSpacing": "0", "fontWeight": "600"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .material-symbols-outlined.fill {
+      font-variation-settings: 'FILL' 1;
+    }
+    /* Custom styled range input */
+    input[type=range] {
+      -webkit-appearance: none;
+      background: transparent;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      height: 20px;
+      width: 20px;
+      border-radius: 9999px;
+      background: #ffffff;
+      border: 3px solid #dc2626;
+      cursor: pointer;
+      margin-top: -7px;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15), 0 0 10px rgba(220, 38, 38, 0.25);
+      transition: transform 0.1s ease;
+    }
+    input[type=range]::-webkit-slider-thumb:active {
+      transform: scale(1.15);
+    }
+    input[type=range]::-webkit-slider-runnable-track {
+      width: 100%;
+      height: 6px;
+      cursor: pointer;
+      background: #e5e7eb;
+      border-radius: 9999px;
+    }
+    /* Pulse glow for active recording accents */
+    @keyframes studio-pulse {
+      0%, 100% { opacity: 0.95; filter: drop-shadow(0 0 6px rgba(220,38,38,0.5)); }
+      50% { opacity: 0.45; filter: drop-shadow(0 0 2px rgba(220,38,38,0.2)); }
+    }
+    .animate-studio-pulse {
+      animation: studio-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-[#f4f5f8] text-[#111827] antialiased min-h-screen flex justify-center selection:bg-red-100 selection:text-red-700">
+<!-- Mobile Device Shell Container -->
+<div class="w-full max-w-md bg-[#fafafc] min-h-screen flex flex-col relative pb-36 border-x border-gray-200/80 shadow-sm">
+<!-- Top Status Bar & App Bar Area -->
+<header class="sticky top-0 z-40 bg-[#fafafc]/95 backdrop-blur-md px-margin-compact pt-space-md pb-space-sm border-b border-gray-200/80 flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<button aria-label="Back to Previous Screen" class="w-10 h-10 -ml-1 rounded-full flex items-center justify-center text-gray-700 hover:bg-gray-100 active:scale-95 transition-all duration-150" type="button">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<div class="flex items-center gap-space-xs bg-white px-space-md py-space-xs rounded-full border border-gray-200 shadow-sm">
+<span class="w-2 h-2 rounded-full bg-primary-container animate-studio-pulse"></span>
+<span class="font-label-sm text-label-sm text-red-600 font-bold tracking-wider uppercase">Pro 1080p Profile</span>
+</div>
+<button aria-label="Reset Presets" class="w-10 h-10 rounded-full flex items-center justify-center text-gray-500 hover:bg-gray-100 active:scale-95 transition-all duration-150" type="button">
+<span class="material-symbols-outlined" data-icon="tune">tune</span>
+</button>
+</div>
+<div class="flex items-baseline justify-between pt-space-xs">
+<h1 class="font-headline-sm text-headline-sm text-gray-900 tracking-tight font-bold">Recording Settings</h1>
+<span class="font-label-md text-label-md text-gray-400 font-medium">Engine v4.2</span>
+</div>
+</header>
+<!-- Main Scrollable Content Area -->
+<main class="flex-1 px-margin-compact pt-space-md flex flex-col gap-space-lg">
+<!-- SECTION 1: VIDEO CONFIGURATION -->
+<section class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between px-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary-container text-[20px]" data-icon="videocam">videocam</span>
+<h2 class="font-title-md text-title-md text-gray-900 font-semibold tracking-wide">Video Configuration</h2>
+</div>
+<span class="font-label-sm text-label-sm text-gray-600 bg-gray-100 border border-gray-200 px-space-sm py-0.5 rounded-full font-medium">H.264/AVC</span>
+</div>
+<div class="bg-white rounded-lg p-space-md border border-gray-200 shadow-sm flex flex-col gap-space-md">
+<!-- Resolution Selector -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex justify-between items-center">
+<label class="font-label-md text-label-md text-gray-600 font-medium" for="resolution-select">Resolution Preset</label>
+<span class="inline-flex items-center px-space-sm py-0.5 rounded-full text-label-sm font-label-sm bg-red-50 text-red-600 border border-red-200 font-semibold">1080p FHD</span>
+</div>
+<div class="relative">
+<select class="w-full bg-gray-50 border border-gray-200 rounded-DEFAULT text-gray-900 font-body-md text-body-md py-2.5 px-space-md pr-10 focus:ring-2 focus:ring-red-500/20 focus:border-red-500 outline-none transition-colors appearance-none font-medium" id="resolution-select">
+<option value="720p">720p HD (1280 × 720) • Battery Saver</option>
+<option selected="" value="1080p">1080p FHD (1920 × 1080) • Recommended</option>
+<option value="1440p">1440p 2K (2560 × 1440) • Crisp Quad HD</option>
+<option value="4k">4K UHD (3840 × 2160) • Maximum Studio</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-gray-500 text-[20px]" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+<!-- Frame Rate (FPS) Segmented Control -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex justify-between items-center">
+<span class="font-label-md text-label-md text-gray-600 font-medium">Frame Rate (FPS)</span>
+<span class="font-label-sm text-label-sm text-gray-500 font-medium">Smooth Motion</span>
+</div>
+<div class="grid grid-cols-4 gap-1 p-1 bg-gray-100 rounded-full border border-gray-200">
+<button class="py-1.5 rounded-full font-label-md text-label-md text-gray-600 hover:text-gray-900 hover:bg-white transition-colors" type="button">24</button>
+<button class="py-1.5 rounded-full font-label-md text-label-md text-gray-600 hover:text-gray-900 hover:bg-white transition-colors" type="button">30</button>
+<button class="py-1.5 rounded-full font-label-md text-label-md bg-white text-gray-900 font-bold border border-red-500 shadow-sm flex items-center justify-center gap-1.5" type="button">
+<span class="w-1.5 h-1.5 rounded-full bg-red-600"></span>
+                60 FPS
+              </button>
+<button class="py-1.5 rounded-full font-label-md text-label-md text-gray-600 hover:text-gray-900 hover:bg-white transition-colors" type="button">120</button>
+</div>
+</div>
+<!-- Video Bitrate Range Slider -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex justify-between items-center">
+<span class="font-label-md text-label-md text-gray-600 font-medium">Video Bitrate</span>
+<span class="font-label-md text-label-md text-gray-900 font-bold font-headline-sm" id="bitrate-display">16 Mbps</span>
+</div>
+<p class="font-body-sm text-body-sm text-gray-500">Recommended for 1080p 60fps high action</p>
+<div class="pt-2 px-1">
+<input class="w-full" id="bitrate-slider" max="32" min="4" step="2" type="range" value="16"/>
+<div class="flex justify-between font-label-sm text-label-sm text-gray-400 mt-1 font-medium">
+<span>4 Mbps (Eco)</span>
+<span>16 Mbps</span>
+<span>32 Mbps (Lossless)</span>
+</div>
+</div>
+</div>
+<!-- Orientation Control -->
+<div class="flex flex-col gap-space-xs pt-space-xs border-t border-gray-100">
+<span class="font-label-md text-label-md text-gray-600 font-medium">Capture Orientation</span>
+<div class="grid grid-cols-3 gap-2 bg-gray-100 p-1 rounded-DEFAULT border border-gray-200">
+<button class="flex items-center justify-center gap-1.5 py-2 rounded-[0.75rem] bg-white text-gray-900 border border-gray-200 shadow-sm transition-all" type="button">
+<span class="material-symbols-outlined text-[18px] text-red-600" data-icon="screen_rotation">screen_rotation</span>
+<span class="font-label-md text-label-md font-bold">Auto</span>
+</button>
+<button class="flex items-center justify-center gap-1.5 py-2 rounded-[0.75rem] text-gray-600 hover:bg-white hover:text-gray-900 transition-all font-medium" type="button">
+<span class="material-symbols-outlined text-[18px]" data-icon="stay_current_portrait">stay_current_portrait</span>
+<span class="font-label-md text-label-md">Portrait</span>
+</button>
+<button class="flex items-center justify-center gap-1.5 py-2 rounded-[0.75rem] text-gray-600 hover:bg-white hover:text-gray-900 transition-all font-medium" type="button">
+<span class="material-symbols-outlined text-[18px]" data-icon="stay_current_landscape">stay_current_landscape</span>
+<span class="font-label-md text-label-md">Landscape</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 2: AUDIO CONFIGURATION -->
+<section class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between px-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary-container text-[20px]" data-icon="mic">mic</span>
+<h2 class="font-title-md text-title-md text-gray-900 font-semibold tracking-wide">Audio Configuration</h2>
+</div>
+<span class="font-label-sm text-label-sm text-gray-600 bg-gray-100 border border-gray-200 px-space-sm py-0.5 rounded-full font-medium">48 kHz Stereo</span>
+</div>
+<div class="bg-white rounded-lg p-space-md border border-gray-200 shadow-sm flex flex-col gap-space-md">
+<!-- Radio Source Options -->
+<div class="flex flex-col gap-2.5">
+<!-- Option: Internal -->
+<label class="flex items-center justify-between p-3 rounded-DEFAULT bg-gray-50/70 border border-gray-200 cursor-pointer hover:bg-gray-50 transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-gray-200/80 flex items-center justify-center text-gray-600">
+<span class="material-symbols-outlined text-[18px]" data-icon="speaker">speaker</span>
+</div>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-gray-900 font-medium">Internal Audio</span>
+<span class="font-body-sm text-body-sm text-gray-500">In-game and pristine system audio only</span>
+</div>
+</div>
+<input class="w-4 h-4 text-red-600 border-gray-300 focus:ring-red-500/20" name="audio-source" type="radio"/>
+</label>
+<!-- Option: Microphone -->
+<label class="flex items-center justify-between p-3 rounded-DEFAULT bg-gray-50/70 border border-gray-200 cursor-pointer hover:bg-gray-50 transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-gray-200/80 flex items-center justify-center text-gray-600">
+<span class="material-symbols-outlined text-[18px]" data-icon="mic_external_on">mic_external_on</span>
+</div>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-gray-900 font-medium">Microphone</span>
+<span class="font-body-sm text-body-sm text-gray-500">Voiceover and real-world room speech</span>
+</div>
+</div>
+<input class="w-4 h-4 text-red-600 border-gray-300 focus:ring-red-500/20" name="audio-source" type="radio"/>
+</label>
+<!-- Option: Internal + Mic (ACTIVE) -->
+<label class="flex items-center justify-between p-3 rounded-DEFAULT bg-red-50/40 border-2 border-red-500 shadow-sm cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center text-red-600">
+<span class="material-symbols-outlined text-[18px]" data-icon="graphic_eq">graphic_eq</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-title-md text-title-md text-gray-900 font-bold">Internal + Mic</span>
+<span class="font-label-sm text-label-sm bg-red-600 text-white font-bold px-1.5 py-0.5 rounded-full uppercase tracking-wider">STUDIO DUAL</span>
+</div>
+<span class="font-body-sm text-body-sm text-gray-600">Both channels separated with software noise gate</span>
+</div>
+</div>
+<div class="w-5 h-5 rounded-full border-2 border-red-600 flex items-center justify-center">
+<span class="w-2.5 h-2.5 rounded-full bg-red-600"></span>
+</div>
+</label>
+<!-- Option: Mute -->
+<label class="flex items-center justify-between p-3 rounded-DEFAULT bg-gray-50/70 border border-gray-200 cursor-pointer hover:bg-gray-50 transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-gray-200/80 flex items-center justify-center text-gray-600">
+<span class="material-symbols-outlined text-[18px]" data-icon="mic_off">mic_off</span>
+</div>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-gray-900 font-medium">Mute / None</span>
+<span class="font-body-sm text-body-sm text-gray-500">Silent high-efficiency stream</span>
+</div>
+</div>
+<input class="w-4 h-4 text-red-600 border-gray-300 focus:ring-red-500/20" name="audio-source" type="radio"/>
+</label>
+</div>
+<!-- Live Audio VU Visualizer Preview -->
+<div class="bg-gray-50 p-3 rounded-DEFAULT border border-gray-200 flex flex-col gap-2">
+<div class="flex justify-between items-center text-label-sm font-label-sm text-gray-600 font-medium">
+<span class="flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-red-600 animate-pulse"></span>
+                DUAL CHANNEL MONITOR (L/R)
+              </span>
+<span class="font-mono text-gray-800 font-semibold">-6.2 dB Peak</span>
+</div>
+<!-- Segmented Audio Level Bar -->
+<div class="grid grid-cols-12 gap-1 h-2 w-full">
+<div class="bg-emerald-500 rounded-sm"></div>
+<div class="bg-emerald-500 rounded-sm"></div>
+<div class="bg-emerald-500 rounded-sm"></div>
+<div class="bg-emerald-500 rounded-sm"></div>
+<div class="bg-emerald-500 rounded-sm"></div>
+<div class="bg-emerald-500 rounded-sm"></div>
+<div class="bg-emerald-500 rounded-sm"></div>
+<div class="bg-emerald-500 rounded-sm"></div>
+<div class="bg-amber-400 rounded-sm"></div>
+<div class="bg-amber-500 rounded-sm"></div>
+<div class="bg-red-500 rounded-sm"></div>
+<div class="bg-gray-200 rounded-sm"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 3: CAMERA & OVERLAYS -->
+<section class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between px-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary-container text-[20px]" data-icon="photo_camera_front">photo_camera_front</span>
+<h2 class="font-title-md text-title-md text-gray-900 font-semibold tracking-wide">Camera &amp; Overlays</h2>
+</div>
+<span class="font-label-sm text-label-sm text-red-600 bg-red-50 border border-red-200 px-space-sm py-0.5 rounded-full font-semibold">PIP Active</span>
+</div>
+<div class="bg-white rounded-lg p-space-md border border-gray-200 shadow-sm flex flex-col gap-space-md">
+<!-- Facecam Master Switch Row -->
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-gray-900 font-semibold">Facecam Picture-in-Picture</span>
+<span class="font-body-sm text-body-sm text-gray-500">Render selfie camera on top of recording</span>
+</div>
+<!-- Toggle Switch (ON) -->
+<button aria-checked="true" class="w-12 h-7 bg-red-600 rounded-full p-0.5 flex items-center justify-end transition-colors duration-200 shadow-inner" role="switch" type="button">
+<span class="w-6 h-6 rounded-full bg-white shadow-md"></span>
+</button>
+</div>
+<!-- Quadrant Preview & Setup -->
+<div class="grid grid-cols-2 gap-space-md pt-space-xs border-t border-gray-100">
+<!-- Miniature Screen Preview with 4 Quadrants -->
+<div class="flex flex-col gap-1.5">
+<span class="font-label-md text-label-md text-gray-600 font-medium">Screen Placement</span>
+<div class="aspect-[9/16] max-h-36 bg-gray-50 rounded-lg border-2 border-gray-200 p-1.5 relative flex flex-col justify-between shadow-inner">
+<!-- Top row quadrants -->
+<div class="flex justify-between">
+<div class="w-8 h-8 rounded border border-dashed border-gray-300 flex items-center justify-center hover:bg-gray-100 transition-colors cursor-pointer bg-white/60">
+<span class="text-[9px] text-gray-400 font-bold">TL</span>
+</div>
+<!-- Top-Right SELECTED -->
+<div class="w-8 h-8 rounded-full bg-red-50 border-2 border-red-600 flex items-center justify-center shadow-sm cursor-pointer">
+<span class="material-symbols-outlined text-red-600 text-[14px]" data-icon="check">check</span>
+</div>
+</div>
+<!-- Center hint -->
+<div class="text-center font-label-sm text-[9px] text-gray-400 uppercase tracking-wider font-semibold">
+                  Canvas View
+                </div>
+<!-- Bottom row quadrants -->
+<div class="flex justify-between">
+<div class="w-8 h-8 rounded border border-dashed border-gray-300 flex items-center justify-center hover:bg-gray-100 transition-colors cursor-pointer bg-white/60">
+<span class="text-[9px] text-gray-400 font-bold">BL</span>
+</div>
+<div class="w-8 h-8 rounded border border-dashed border-gray-300 flex items-center justify-center hover:bg-gray-100 transition-colors cursor-pointer bg-white/60">
+<span class="text-[9px] text-gray-400 font-bold">BR</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Facecam Styling Selector -->
+<div class="flex flex-col justify-between">
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-md text-label-md text-gray-600 font-medium">Shape Profile</span>
+<div class="flex flex-col gap-2">
+<button class="flex items-center gap-2 p-2 rounded-DEFAULT bg-red-50/50 border border-red-500 text-gray-900 text-left" type="button">
+<div class="w-4 h-4 rounded-full border-2 border-red-600 flex items-center justify-center">
+<span class="w-2 h-2 rounded-full bg-red-600"></span>
+</div>
+<span class="font-label-md text-label-md font-bold">Circle Head</span>
+</button>
+<button class="flex items-center gap-2 p-2 rounded-DEFAULT bg-gray-50 border border-gray-200 text-gray-600 hover:bg-gray-100 transition-colors text-left font-medium" type="button">
+<div class="w-4 h-3.5 rounded border-2 border-gray-400"></div>
+<span class="font-label-md text-label-md">Rounded Rect</span>
+</button>
+</div>
+</div>
+<!-- Facecam Size Scale -->
+<div class="flex flex-col gap-1 pt-2">
+<div class="flex justify-between text-label-sm font-label-sm text-gray-600 font-medium">
+<span>PIP Scale</span>
+<span class="text-gray-900 font-bold">22%</span>
+</div>
+<div class="w-full bg-gray-200 h-1.5 rounded-full overflow-hidden">
+<div class="bg-red-600 h-full w-[22%]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 4: RECORDING TOOLS & CONVENIENCE -->
+<section class="flex flex-col gap-space-sm">
+<div class="flex items-center gap-space-xs px-space-xs">
+<span class="material-symbols-outlined text-primary-container text-[20px]" data-icon="auto_fix_high">auto_fix_high</span>
+<h2 class="font-title-md text-title-md text-gray-900 font-semibold tracking-wide">Recording Tools &amp; Convenience</h2>
+</div>
+<div class="bg-white rounded-lg p-space-md border border-gray-200 shadow-sm flex flex-col gap-space-md">
+<!-- Countdown Timer Setting -->
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-gray-900 font-semibold">Countdown Lead-in</span>
+<span class="font-body-sm text-body-sm text-gray-500">Buffer before capture activates</span>
+</div>
+<div class="flex items-center gap-1 bg-gray-100 p-1 rounded-full border border-gray-200">
+<button class="px-2.5 py-1 rounded-full text-label-md font-label-md bg-white text-gray-900 font-bold border border-red-500 shadow-sm" type="button">3s</button>
+<button class="px-2.5 py-1 rounded-full text-label-md font-label-md text-gray-600 hover:text-gray-900 transition-colors font-medium" type="button">5s</button>
+<button class="px-2 py-1 rounded-full text-label-md font-label-md text-gray-600 hover:text-gray-900 transition-colors font-medium" type="button">Off</button>
+</div>
+</div>
+<!-- Show Screen Touches Switch -->
+<div class="flex items-center justify-between pt-space-xs border-t border-gray-100">
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-gray-900 font-semibold">Show Screen Touches</span>
+<span class="font-body-sm text-body-sm text-gray-500">Visual ripple cue on screen taps</span>
+</div>
+<button aria-checked="true" class="w-12 h-7 bg-red-600 rounded-full p-0.5 flex items-center justify-end transition-colors duration-200 shadow-inner" role="switch" type="button">
+<span class="w-6 h-6 rounded-full bg-white shadow-md"></span>
+</button>
+</div>
+<!-- Floating Control Bubble Switch -->
+<div class="flex items-center justify-between pt-space-xs border-t border-gray-100">
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-gray-900 font-semibold">Floating Control Bubble</span>
+<span class="font-body-sm text-body-sm text-gray-500">Overlay widget for quick pause &amp; stop</span>
+</div>
+<button aria-checked="true" class="w-12 h-7 bg-red-600 rounded-full p-0.5 flex items-center justify-end transition-colors duration-200 shadow-inner" role="switch" type="button">
+<span class="w-6 h-6 rounded-full bg-white shadow-md"></span>
+</button>
+</div>
+<!-- Shake Device to Stop -->
+<div class="flex items-center justify-between pt-space-xs border-t border-gray-100">
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-gray-900 font-semibold">Shake to Finish</span>
+<span class="font-body-sm text-body-sm text-gray-500">Halt recording instantly by shaking phone</span>
+</div>
+<button aria-checked="false" class="w-12 h-7 bg-gray-200 rounded-full p-0.5 flex items-center justify-start transition-colors duration-200" role="switch" type="button">
+<span class="w-6 h-6 rounded-full bg-white shadow-sm"></span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<!-- PINNED STUDIO RECORD FOOTER -->
+<footer class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-md bg-white/95 backdrop-blur-xl border-t border-gray-200 px-margin-compact pt-space-sm pb-space-lg shadow-xl flex flex-col gap-space-xs z-50">
+<!-- Telemetry Info Row -->
+<div class="flex items-center justify-between text-label-sm font-label-sm text-gray-600 px-space-xs font-medium">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-red-600" data-icon="database">database</span>
+<span>Footprint: <strong class="text-gray-900 font-semibold">~120 MB/min</strong></span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-gray-400" data-icon="storage">storage</span>
+<span>Available: <strong class="text-gray-900 font-semibold">64.2 GB (8.5 hrs)</strong></span>
+</div>
+</div>
+<!-- Action Button -->
+<button class="w-full bg-red-600 hover:bg-red-700 active:scale-[0.98] transition-all duration-150 text-white rounded-full py-3.5 px-space-lg flex items-center justify-center gap-3 shadow-lg shadow-red-500/25 border border-red-500 group font-headline-sm" type="button">
+<span class="w-3.5 h-3.5 rounded-full bg-white animate-pulse"></span>
+<span class="text-headline-sm font-bold tracking-normal text-white">Start Recording</span>
+<span class="material-symbols-outlined text-[22px] group-hover:translate-x-0.5 transition-transform" data-icon="play_arrow">play_arrow</span>
+</button>
+</footer>
+</div>
+<script>
+    // Lightweight micro-interaction for Bitrate Slider
+    const bitrateSlider = document.getElementById('bitrate-slider');
+    const bitrateDisplay = document.getElementById('bitrate-display');
+    if (bitrateSlider && bitrateDisplay) {
+      bitrateSlider.addEventListener('input', (e) => {
+        bitrateDisplay.textContent = `${e.target.value} Mbps`;
+      });
+    }
+
+    // Toggle switch interaction
+    const toggleSwitches = document.querySelectorAll('button[role="switch"]');
+    toggleSwitches.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const isChecked = btn.getAttribute('aria-checked') === 'true';
+        btn.setAttribute('aria-checked', (!isChecked).toString());
+        if (!isChecked) {
+          btn.classList.remove('bg-gray-200', 'justify-start');
+          btn.classList.add('bg-red-600', 'justify-end', 'shadow-inner');
+        } else {
+          btn.classList.remove('bg-red-600', 'justify-end', 'shadow-inner');
+          btn.classList.add('bg-gray-200', 'justify-start');
+        }
+      });
+    });
+  </script>
+</body></html>
+
+6 . Permission Request Screen :

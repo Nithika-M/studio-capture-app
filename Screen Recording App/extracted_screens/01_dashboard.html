@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Consolidated Screen Recorder</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-error": "#690005",
+            "tertiary": "#d63135",
+            "primary-fixed-dim": "#ffb4ab",
+            "on-error-container": "#ffdad6",
+            "on-tertiary-fixed-variant": "#930013",
+            "on-secondary": "#233143",
+            "primary": "#dc2626",
+            "surface": "#ffffff",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-high": "#f1f4f9",
+            "outline-variant": "#e2e8f0",
+            "surface-bright": "#ffffff",
+            "error-container": "#fee2e2",
+            "on-background": "#111827",
+            "inverse-surface": "#1e293b",
+            "surface-container-highest": "#e2e8f0",
+            "surface-variant": "#f1f5f9",
+            "secondary-container": "#fee2e2",
+            "surface-dim": "#f8fafc",
+            "outline": "#cbd5e1",
+            "surface-tint": "#dc2626",
+            "secondary-fixed": "#d4e4fa",
+            "on-secondary-container": "#b91c1c",
+            "inverse-primary": "#bf0715",
+            "surface-container": "#f8fafc",
+            "background": "#f8f9fa",
+            "surface-container-low": "#f8fafc",
+            "secondary": "#64748b",
+            "tertiary-fixed-dim": "#ffb3ad",
+            "on-primary": "#ffffff",
+            "inverse-on-surface": "#f8fafc",
+            "on-tertiary-fixed": "#410004",
+            "on-primary-fixed-variant": "#93000b",
+            "on-surface": "#111827",
+            "secondary-fixed-dim": "#b9c8de",
+            "tertiary-container": "#fee2e2",
+            "on-surface-variant": "#475569",
+            "on-secondary-fixed-variant": "#39485a",
+            "on-tertiary": "#ffffff",
+            "on-primary-fixed": "#410002",
+            "primary-fixed": "#ffdad6",
+            "on-tertiary-container": "#7f1d1d",
+            "on-primary-container": "#ffffff",
+            "error": "#ef4444",
+            "primary-container": "#dc2626",
+            "tertiary-fixed": "#ffdad7",
+            "on-secondary-fixed": "#0d1c2d"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-md": "1rem",
+            "margin": "1.25rem",
+            "space-xl": "2rem",
+            "space-sm": "0.5rem",
+            "gutter-sm": "0.75rem",
+            "space-xs": "0.25rem",
+            "gutter": "1rem",
+            "margin-compact": "1rem",
+            "space-lg": "1.5rem"
+          },
+          "fontFamily": {
+            "title-md": ["Hanken Grotesk"],
+            "body-sm": ["Hanken Grotesk"],
+            "headline-md": ["Manrope"],
+            "display-lg": ["Manrope"],
+            "headline-lg-mobile": ["Manrope"],
+            "label-lg": ["Hanken Grotesk"],
+            "headline-sm": ["Manrope"],
+            "headline-lg": ["Manrope"],
+            "body-md": ["Hanken Grotesk"],
+            "body-lg": ["Hanken Grotesk"],
+            "label-md": ["Hanken Grotesk"],
+            "title-lg": ["Hanken Grotesk"],
+            "label-sm": ["Hanken Grotesk"]
+          },
+          "fontSize": {
+            "title-md": ["16px", { "lineHeight": "24px", "letterSpacing": "0.005em", "fontWeight": "600" }],
+            "body-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "display-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+            "headline-lg-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "letterSpacing": "0", "fontWeight": "600" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0", "fontWeight": "400" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0", "fontWeight": "400" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "title-lg": ["18px", { "lineHeight": "26px", "letterSpacing": "0", "fontWeight": "600" }],
+            "label-sm": ["10px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 22px;
+      line-height: 1;
+      display: inline-block;
+      text-transform: none;
+      letter-spacing: normal;
+      word-wrap: normal;
+      white-space: nowrap;
+      direction: ltr;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      font-feature-settings: 'liga';
+    }
+    
+    @keyframes pulse-ring {
+      0% { transform: scale(0.95); opacity: 0.6; }
+      50% { transform: scale(1.1); opacity: 0.15; }
+      100% { transform: scale(0.95); opacity: 0.6; }
+    }
+    .animate-pulse-glow {
+      animation: pulse-ring 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased min-h-screen flex justify-center selection:bg-primary-container selection:text-on-primary-container">
+<!-- Mobile Container Shell -->
+<div class="w-full max-w-[440px] flex flex-col min-h-screen relative bg-[#F8F9FA] shadow-xl pb-28">
+<!-- Top App Bar -->
+<header class="docked full-width top-0 bg-white/95 backdrop-blur-md border-b border-slate-200/80 flex justify-between items-center w-full px-margin-compact py-space-sm sticky top-0 z-40 shadow-xs">
+<div class="flex items-center gap-space-sm">
+<!-- Leading Avatar -->
+<div class="w-9 h-9 rounded-full bg-slate-100 ring-1 ring-slate-200 flex items-center justify-center overflow-hidden hover:bg-slate-200 transition-colors duration-150 active:scale-95 transition-transform duration-100 cursor-pointer">
+<img class="w-full h-full object-cover" data-alt="Close-up portrait of a tech content creator in a studio, captured in modern high-resolution digital art style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDr9d7wqZfIJS9IJdxhItw1VQBK2pSlIPx6-H4TozPcut3FWFzPipEjI2swsbYiDoFKWrYSorr3ESBHM8TERgsnsjioHZ434tOp4nNOD71hVNuIhx4kwdsUm4xN7dyDZZEjOLbEr7eJwavMt9Mv8RbjUs4bIH33f1ZcuvGw8VRBlCQYgumxYzFmmGJQkDypQEtX_MSbyeEQhGTlI0sS6DySWGWfF7M2EsPuvEAWIL5dV2VLXwOZjeF2vg"/>
+</div>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="text-headline-sm font-headline-sm text-slate-900 font-bold tracking-tight">Studio Capture</span>
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+</div>
+<p class="text-label-sm font-label-sm text-slate-500 flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px] text-slate-400">memory</span>
+<span>64.2 GB free</span>
+</p>
+</div>
+</div>
+<!-- Trailing Cluster -->
+<div class="flex items-center gap-1.5">
+<button class="w-8 h-8 rounded-full flex items-center justify-center bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-slate-900 border border-slate-200/60 transition-colors duration-150 active:scale-95 transition-transform duration-100">
+<span class="material-symbols-outlined text-[18px]">volume_up</span>
+</button>
+<button class="w-8 h-8 rounded-full flex items-center justify-center bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-slate-900 border border-slate-200/60 transition-colors duration-150 active:scale-95 transition-transform duration-100">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 flex flex-col px-margin-compact pt-space-md space-y-space-lg">
+<!-- Central Recording Hero Section -->
+<section class="bg-white rounded-2xl p-space-md border border-slate-200/80 relative overflow-hidden flex flex-col items-center text-center shadow-sm">
+<!-- Ambient radial glow under recording trigger -->
+<div class="absolute -top-12 inset-x-0 h-44 bg-red-500/10 blur-3xl rounded-full pointer-events-none"></div>
+<!-- Telemetry & Mode status pill -->
+<div class="flex items-center gap-2 bg-slate-50 border border-slate-200 px-3 py-1 rounded-full mb-space-md z-10 shadow-xs">
+<span class="w-2 h-2 rounded-full bg-primary-container animate-ping"></span>
+<span class="text-label-sm font-label-sm text-slate-900 font-semibold tracking-wider uppercase">System Ready</span>
+<span class="text-slate-300 text-label-sm font-label-sm">•</span>
+<span class="text-label-sm font-label-sm text-slate-500 font-medium">1080p 60FPS</span>
+</div>
+<!-- Live Stopwatch / Preview Counter -->
+<div class="z-10 mb-space-md">
+<span class="font-headline-lg-mobile text-headline-lg-mobile text-slate-900 tracking-tight font-extrabold font-headline-md block tabular-nums">
+            00:00:00
+          </span>
+<span class="font-label-sm text-label-sm text-slate-500">Standby buffer cleared</span>
+</div>
+<!-- Start Recording Trigger Anchor -->
+<div class="relative flex items-center justify-center my-space-xs z-10">
+<!-- Outer Pulsing Halo -->
+<div class="absolute w-24 h-24 rounded-full bg-red-500/20 animate-pulse-glow pointer-events-none"></div>
+<button class="relative w-20 h-20 rounded-full bg-primary-container text-white shadow-[0_4px_24px_rgba(220,38,38,0.35)] hover:shadow-[0_6px_28px_rgba(220,38,38,0.5)] flex flex-col items-center justify-center transition-all duration-200 active:scale-95 group focus:outline-none focus:ring-4 focus:ring-red-300">
+<span class="w-7 h-7 rounded-full bg-white flex items-center justify-center shadow-inner transition-transform group-hover:scale-105">
+<span class="w-3 h-3 rounded-sm bg-primary-container"></span>
+</span>
+</button>
+</div>
+<span class="mt-space-sm text-label-lg font-label-lg text-slate-900 font-bold tracking-wide">
+          Start Recording
+        </span>
+<span class="text-body-sm font-body-sm text-slate-500 mb-space-md">
+          Tap to capture high-definition stream
+        </span>
+<!-- Quick Telemetry Chips (Pills) -->
+<div class="w-full flex items-center justify-center gap-1.5 flex-wrap z-10 pt-space-xs border-t border-slate-100">
+<button class="inline-flex items-center gap-1.5 bg-slate-50 border border-slate-200/80 px-2.5 py-1 rounded-full text-label-sm font-label-sm text-slate-800 hover:bg-slate-100 transition-colors">
+<span class="material-symbols-outlined text-[14px] text-red-600">graphic_eq</span>
+<span>Internal: ON</span>
+</button>
+<button class="inline-flex items-center gap-1.5 bg-slate-50 border border-slate-200/80 px-2.5 py-1 rounded-full text-label-sm font-label-sm text-slate-600 hover:bg-slate-100 transition-colors">
+<span class="material-symbols-outlined text-[14px] text-slate-400">mic_off</span>
+<span>Mic: Muted</span>
+</button>
+<button class="inline-flex items-center gap-1.5 bg-slate-50 border border-slate-200/80 px-2.5 py-1 rounded-full text-label-sm font-label-sm text-slate-600 hover:bg-slate-100 transition-colors">
+<span class="material-symbols-outlined text-[14px] text-slate-400">hd</span>
+<span>FHD • 60 FPS</span>
+</button>
+</div>
+</section>
+<!-- Quick-Action Cards Bento Grid -->
+<section class="space-y-space-sm">
+<div class="flex items-center justify-between px-space-xs">
+<h2 class="text-title-lg font-title-lg text-slate-900 tracking-tight">Capture Modes</h2>
+<span class="text-label-sm font-label-sm text-slate-600 bg-white px-2 py-0.5 rounded-md border border-slate-200 shadow-xs">7 Tools</span>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+<!-- Card 1: Screen Recording (Active primary card) -->
+<div class="bg-white hover:bg-slate-50 rounded-xl p-3.5 border-2 border-primary-container/40 relative flex flex-col justify-between group transition-all duration-150 cursor-pointer active:scale-95 col-span-1 shadow-xs">
+<div class="flex items-center justify-between mb-3">
+<div class="w-9 h-9 rounded-lg bg-red-50 text-primary-container flex items-center justify-center ring-1 ring-primary-container/20">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">screenshot_monitor</span>
+</div>
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+</div>
+<div>
+<h3 class="text-title-md font-title-md text-slate-900">Screen Recording</h3>
+<p class="text-body-sm font-body-sm text-slate-500 mt-0.5 line-clamp-1">Full display capture</p>
+</div>
+</div>
+<!-- Card 2: Voice + Screen -->
+<div class="bg-white hover:bg-slate-50 rounded-xl p-3.5 border border-slate-200/80 flex flex-col justify-between group transition-all duration-150 cursor-pointer active:scale-95 col-span-1 shadow-xs">
+<div class="flex items-center justify-between mb-3">
+<div class="w-9 h-9 rounded-lg bg-slate-100 text-slate-700 flex items-center justify-center group-hover:text-slate-900 group-hover:bg-slate-200 transition-colors">
+<span class="material-symbols-outlined">record_voice_over</span>
+</div>
+</div>
+<div>
+<h3 class="text-title-md font-title-md text-slate-900">Voice + Screen</h3>
+<p class="text-body-sm font-body-sm text-slate-500 mt-0.5 line-clamp-1">External commentary</p>
+</div>
+</div>
+<!-- Card 3: Facecam -->
+<div class="bg-white hover:bg-slate-50 rounded-xl p-3.5 border border-slate-200/80 flex flex-col justify-between group transition-all duration-150 cursor-pointer active:scale-95 col-span-1 shadow-xs">
+<div class="flex items-center justify-between mb-3">
+<div class="w-9 h-9 rounded-lg bg-slate-100 text-slate-700 flex items-center justify-center group-hover:text-slate-900 group-hover:bg-slate-200 transition-colors">
+<span class="material-symbols-outlined">person_pin</span>
+</div>
+</div>
+<div>
+<h3 class="text-title-md font-title-md text-slate-900">Facecam</h3>
+<p class="text-body-sm font-body-sm text-slate-500 mt-0.5 line-clamp-1">PiP front camera overlay</p>
+</div>
+</div>
+<!-- Card 4: Game Recording -->
+<div class="bg-white hover:bg-slate-50 rounded-xl p-3.5 border border-slate-200/80 flex flex-col justify-between group transition-all duration-150 cursor-pointer active:scale-95 col-span-1 shadow-xs">
+<div class="flex items-center justify-between mb-3">
+<div class="w-9 h-9 rounded-lg bg-slate-100 text-slate-700 flex items-center justify-center group-hover:text-slate-900 group-hover:bg-slate-200 transition-colors">
+<span class="material-symbols-outlined">sports_esports</span>
+</div>
+<span class="text-[10px] font-label-sm font-semibold bg-red-50 text-primary-container border border-red-200/60 px-1.5 py-0.5 rounded">120 FPS</span>
+</div>
+<div>
+<h3 class="text-title-md font-title-md text-slate-900">Game Recording</h3>
+<p class="text-body-sm font-body-sm text-slate-500 mt-0.5 line-clamp-1">Low latency sync</p>
+</div>
+</div>
+<!-- Card 5: Screenshot -->
+<div class="bg-white hover:bg-slate-50 rounded-xl p-3.5 border border-slate-200/80 flex flex-col justify-between group transition-all duration-150 cursor-pointer active:scale-95 col-span-1 shadow-xs">
+<div class="flex items-center justify-between mb-3">
+<div class="w-9 h-9 rounded-lg bg-slate-100 text-slate-700 flex items-center justify-center group-hover:text-slate-900 group-hover:bg-slate-200 transition-colors">
+<span class="material-symbols-outlined">camera</span>
+</div>
+</div>
+<div>
+<h3 class="text-title-md font-title-md text-slate-900">Screenshot</h3>
+<p class="text-body-sm font-body-sm text-slate-500 mt-0.5 line-clamp-1">Instant screen grab</p>
+</div>
+</div>
+<!-- Card 6: Draw on Screen -->
+<div class="bg-white hover:bg-slate-50 rounded-xl p-3.5 border border-slate-200/80 flex flex-col justify-between group transition-all duration-150 cursor-pointer active:scale-95 col-span-1 shadow-xs">
+<div class="flex items-center justify-between mb-3">
+<div class="w-9 h-9 rounded-lg bg-slate-100 text-slate-700 flex items-center justify-center group-hover:text-slate-900 group-hover:bg-slate-200 transition-colors">
+<span class="material-symbols-outlined">draw</span>
+</div>
+</div>
+<div>
+<h3 class="text-title-md font-title-md text-slate-900">Draw on Screen</h3>
+<p class="text-body-sm font-body-sm text-slate-500 mt-0.5 line-clamp-1">Annotator brush kit</p>
+</div>
+</div>
+<!-- Card 7: GIF Recording (spans full width on 2-col) -->
+<div class="bg-white hover:bg-slate-50 rounded-xl p-3.5 border border-slate-200/80 flex items-center justify-between group transition-all duration-150 cursor-pointer active:scale-95 col-span-2 sm:col-span-3 shadow-xs">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-slate-100 text-slate-700 flex items-center justify-center group-hover:text-slate-900 group-hover:bg-slate-200 transition-colors">
+<span class="material-symbols-outlined">gif</span>
+</div>
+<div>
+<h3 class="text-title-md font-title-md text-slate-900">GIF Recording</h3>
+<p class="text-body-sm font-body-sm text-slate-500">Lightweight animated clip generator</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-400 group-hover:text-slate-700 transition-transform group-hover:translate-x-0.5">chevron_right</span>
+</div>
+</div>
+</section>
+<!-- Recent Recordings Carousel Section -->
+<section class="space-y-space-sm">
+<div class="flex items-center justify-between px-space-xs">
+<div>
+<h2 class="text-title-lg font-title-lg text-slate-900 tracking-tight">Recent Recordings</h2>
+<p class="text-body-sm font-body-sm text-slate-500">Saved to Local Media Store</p>
+</div>
+<button class="text-label-md font-label-md text-primary hover:underline flex items-center gap-0.5">
+<span>View all</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+<!-- Horizontal Scroll List -->
+<div class="flex gap-space-sm overflow-x-auto no-scrollbar py-1 -mx-margin-compact px-margin-compact snap-x snap-mandatory">
+<!-- Item 1 -->
+<div class="flex-shrink-0 w-64 bg-white rounded-xl border border-slate-200/80 overflow-hidden snap-start group shadow-xs hover:shadow-md transition-shadow duration-200">
+<div class="relative h-36 bg-slate-100 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="A dark high-tech gameplay capture preview showing futuristic sci-fi game UI metrics and neon red HUD elements, rendered in ultra-clear cinematic slate and charcoal tones with crisp glowing overlays that align with the screen recorder app design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLu_1varW2p2TPHeMMKRljuCHpemnjBkzjwkpzcQI8gAYqQdbVquX75D2kX7GNXIx6-jDpgEPXHnxgblkiYR-Q6tNloHRKjb-9dOjq-c18n4ND5mp63zMubfw4Dxoe6-QnpYzeJWnrZrX9XFUoDanYZCEIoeVTGJH5IrRE51Vp4xjBTG9TwZnpidWTJuREL_3p8M_pr1VwWv76YGgPFmcSp5tpmmkGuroTtQIURg8ywRmu-0NIdrkBSA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+<!-- Duration Badge -->
+<span class="absolute bottom-2 right-2 bg-black/75 backdrop-blur-md px-2 py-0.5 rounded text-label-sm font-label-sm text-white font-semibold">
+                04:12
+              </span>
+<!-- Play Button overlay -->
+<div class="absolute inset-0 flex items-center justify-center opacity-85 group-hover:opacity-100 transition-opacity">
+<div class="w-10 h-10 rounded-full bg-white/90 backdrop-blur-md border border-white/60 flex items-center justify-center text-slate-900 shadow-md">
+<span class="material-symbols-outlined text-[20px] text-primary" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</div>
+</div>
+</div>
+<div class="p-3">
+<div class="flex items-start justify-between">
+<div>
+<h4 class="text-title-md font-title-md text-slate-900 line-clamp-1">Apex_Battle_S6_Clip</h4>
+<div class="flex items-center gap-2 mt-1 text-label-sm font-label-sm text-slate-500">
+<span>1080p • 60fps</span>
+<span>•</span>
+<span>142 MB</span>
+</div>
+</div>
+<button class="text-slate-400 hover:text-slate-700 p-1">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+<div class="mt-2 pt-2 border-t border-slate-100 flex items-center justify-between text-body-sm font-body-sm text-slate-500">
+<span>2 hrs ago</span>
+<span class="text-label-sm font-label-sm text-slate-600 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-primary">cloud_done</span> Synced
+                </span>
+</div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex-shrink-0 w-64 bg-white rounded-xl border border-slate-200/80 overflow-hidden snap-start group shadow-xs hover:shadow-md transition-shadow duration-200">
+<div class="relative h-36 bg-slate-100 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Modern mobile product walkthrough screencast demonstrating a dark sleek mobile interface with clean geometric layout and glowing analytics graphs, captured under high-contrast dark room aesthetics matching studio recording quality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBznECm3PmOaHFCzACM8M-LqdNSNZtZcGuDvyHskiMRa5ljedg-l_bZmiS4_iEdDDlrpmUi2DSRA3PHXdxq-CXw2VxP9eGQ3R60ieSYL1prGUH6yzUUlW4HaOxUTdvxzb5JphtTk3Ymu8IZkxcguuct-b96bGRUPRFE5f1QMdbZiF5hnGFQRhPhtLes5e5MmdcUua3SfccLHMDAZd1O8j3uFt_v1VnldshFXG6CI1-0thUTyW0rwjdCTA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+<!-- Duration Badge -->
+<span class="absolute bottom-2 right-2 bg-black/75 backdrop-blur-md px-2 py-0.5 rounded text-label-sm font-label-sm text-white font-semibold">
+                01:45
+              </span>
+<div class="absolute inset-0 flex items-center justify-center opacity-85 group-hover:opacity-100 transition-opacity">
+<div class="w-10 h-10 rounded-full bg-white/90 backdrop-blur-md border border-white/60 flex items-center justify-center text-slate-900 shadow-md">
+<span class="material-symbols-outlined text-[20px] text-primary" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</div>
+</div>
+</div>
+<div class="p-3">
+<div class="flex items-start justify-between">
+<div>
+<h4 class="text-title-md font-title-md text-slate-900 line-clamp-1">App_Tutorial_v2</h4>
+<div class="flex items-center gap-2 mt-1 text-label-sm font-label-sm text-slate-500">
+<span>1080p • 30fps</span>
+<span>•</span>
+<span>48 MB</span>
+</div>
+</div>
+<button class="text-slate-400 hover:text-slate-700 p-1">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+<div class="mt-2 pt-2 border-t border-slate-100 flex items-center justify-between text-body-sm font-body-sm text-slate-500">
+<span>Yesterday</span>
+<span class="text-label-sm font-label-sm text-slate-600 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-slate-400">phone_iphone</span> Local
+                </span>
+</div>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="flex-shrink-0 w-64 bg-white rounded-xl border border-slate-200/80 overflow-hidden snap-start group shadow-xs hover:shadow-md transition-shadow duration-200">
+<div class="relative h-36 bg-slate-100 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Code review screen recording session showing complex modern syntax on an IDE in dark theme with soft ruby red and cyan code highlighting, framed with high precision and studio grade contrast." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsE2mLJ-W2fmskDwIUHxxIZDu_OGHnuhi7LuS6yjRCIO7zNxIqvhWFZC9fMjs8Im1Fo9gaLTsHJy7wcYeAK63rR789OkoItW2OdlU-0kX7u5bj5zZSzCTp9ZeS91dbb2qb4NSoByX6LkKf1vCpS-B3310EQjqraURwqxveppdDyWQVA1KajntjJM4Ksj0t8hf3i9HoHibmExMeO_urOlNUg_2VwZgQM3AWU223gw93-Rbn1Lt7BWf5ug"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+<!-- Duration Badge -->
+<span class="absolute bottom-2 right-2 bg-black/75 backdrop-blur-md px-2 py-0.5 rounded text-label-sm font-label-sm text-white font-semibold">
+                12:08
+              </span>
+<div class="absolute inset-0 flex items-center justify-center opacity-85 group-hover:opacity-100 transition-opacity">
+<div class="w-10 h-10 rounded-full bg-white/90 backdrop-blur-md border border-white/60 flex items-center justify-center text-slate-900 shadow-md">
+<span class="material-symbols-outlined text-[20px] text-primary" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</div>
+</div>
+</div>
+<div class="p-3">
+<div class="flex items-start justify-between">
+<div>
+<h4 class="text-title-md font-title-md text-slate-900 line-clamp-1">Dev_Walkthrough_Refactor</h4>
+<div class="flex items-center gap-2 mt-1 text-label-sm font-label-sm text-slate-500">
+<span>1080p • 60fps</span>
+<span>•</span>
+<span>390 MB</span>
+</div>
+</div>
+<button class="text-slate-400 hover:text-slate-700 p-1">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+<div class="mt-2 pt-2 border-t border-slate-100 flex items-center justify-between text-body-sm font-body-sm text-slate-500">
+<span>3 days ago</span>
+<span class="text-label-sm font-label-sm text-slate-600 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-primary">cloud_done</span> Synced
+                </span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar Component -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-margin-compact py-space-xs pb-safe bg-white/95 backdrop-blur-md border-t border-slate-200/90 shadow-lg">
+<!-- Tab 1: Home (Active based on screen intent) -->
+<a class="flex flex-col items-center justify-center bg-red-50 text-primary-container rounded-full px-space-md py-space-xs hover:bg-red-100 transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">videocam</span>
+<span class="text-label-sm font-label-sm font-semibold mt-0.5">Home</span>
+</a>
+<!-- Tab 2: Recordings -->
+<a class="flex flex-col items-center justify-center text-slate-500 hover:text-slate-900 px-space-md py-space-xs hover:bg-slate-100 rounded-full transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined">folder_open</span>
+<span class="text-label-sm font-label-sm mt-0.5">Recordings</span>
+</a>
+<!-- Tab 3: Tools -->
+<a class="flex flex-col items-center justify-center text-slate-500 hover:text-slate-900 px-space-md py-space-xs hover:bg-slate-100 rounded-full transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined">auto_fix_high</span>
+<span class="text-label-sm font-label-sm mt-0.5">Tools</span>
+</a>
+<!-- Tab 4: Settings -->
+<a class="flex flex-col items-center justify-center text-slate-500 hover:text-slate-900 px-space-md py-space-xs hover:bg-slate-100 rounded-full transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-label-sm font-label-sm mt-0.5">Settings</span>
+</a>
+</nav>
+</div>
+</body></html>
+
+2 .Splash Screen :

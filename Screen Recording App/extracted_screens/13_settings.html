@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Settings - Consolidated Screen Recorder</title>
+<!-- Google Fonts: Manrope & Hanken Grotesk -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=Manrope:wght@500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS with Forms & Container Queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "error": "#dc2626",
+          "primary": "#dc2626",
+          "primary-container": "#dc2626",
+          "background": "#f8f9fc",
+          "surface": "#ffffff",
+          "on-surface": "#111827",
+          "secondary": "#6b7280"
+        },
+        "borderRadius": {
+          "DEFAULT": "1rem",
+          "lg": "1.25rem",
+          "xl": "2rem",
+          "full": "9999px"
+        },
+        "spacing": {
+          "space-xl": "2rem",
+          "space-xs": "0.25rem",
+          "space-sm": "0.5rem",
+          "gutter-sm": "0.75rem",
+          "margin-compact": "1rem",
+          "space-lg": "1.5rem",
+          "gutter": "1rem",
+          "space-md": "1rem",
+          "margin": "1.25rem"
+        },
+        "fontFamily": {
+          "label-sm": ["Hanken Grotesk"],
+          "body-sm": ["Hanken Grotesk"],
+          "headline-md": ["Manrope"],
+          "headline-sm": ["Manrope"],
+          "title-lg": ["Hanken Grotesk"],
+          "display-lg": ["Manrope"],
+          "body-md": ["Hanken Grotesk"],
+          "body-lg": ["Hanken Grotesk"],
+          "label-lg": ["Hanken Grotesk"],
+          "title-md": ["Hanken Grotesk"],
+          "headline-lg": ["Manrope"],
+          "headline-lg-mobile": ["Manrope"],
+          "label-md": ["Hanken Grotesk"]
+        },
+        "fontSize": {
+          "label-sm": ["10px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600" }],
+          "body-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+          "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+          "headline-sm": ["20px", { "lineHeight": "28px", "letterSpacing": "0", "fontWeight": "600" }],
+          "title-lg": ["18px", { "lineHeight": "26px", "letterSpacing": "0", "fontWeight": "600" }],
+          "display-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+          "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0", "fontWeight": "400" }],
+          "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0", "fontWeight": "400" }],
+          "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+          "title-md": ["16px", { "lineHeight": "24px", "letterSpacing": "0.005em", "fontWeight": "600" }],
+          "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+          "headline-lg-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+          "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }]
+        }
+      },
+    },
+  }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    
+    /* Custom subtle scrollbar */
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-[#FAFAFC] text-[#111827] antialiased min-h-screen pb-28 selection:bg-red-500 selection:text-white">
+<!-- TOP APP BAR -->
+<header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md px-margin-compact py-space-sm flex justify-between items-center w-full border-b border-gray-100">
+<div class="flex items-center space-x-3">
+<button aria-label="Back" class="w-10 h-10 rounded-full flex items-center justify-center text-gray-800 hover:bg-gray-100 transition-colors duration-150 active:scale-95">
+<span class="material-symbols-outlined text-[22px]">arrow_back</span>
+</button>
+<h1 class="text-headline-sm font-headline-sm text-gray-900 font-bold tracking-tight">Settings</h1>
+</div>
+<div class="flex items-center space-x-1">
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-gray-700 hover:bg-gray-100 transition-colors duration-150 active:scale-95" title="Search Settings">
+<span class="material-symbols-outlined text-[22px]">search</span>
+</button>
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-gray-700 hover:bg-gray-100 transition-colors duration-150 active:scale-95" title="Reset Defaults">
+<span class="material-symbols-outlined text-[22px]">restart_alt</span>
+</button>
+</div>
+</header>
+<!-- MAIN SCROLLABLE CONTAINER -->
+<main class="max-w-2xl mx-auto px-margin-compact pt-space-sm space-y-6">
+<!-- PRO RECORDER TELEMETRY & STORAGE BANNER -->
+<div class="bg-white rounded-2xl p-space-md relative overflow-hidden border border-gray-200/80 shadow-sm">
+<div class="absolute -right-10 -top-10 w-36 h-36 bg-red-500/5 rounded-full blur-2xl pointer-events-none"></div>
+<div class="flex items-start justify-between relative z-10">
+<div class="flex items-center space-x-3">
+<div class="w-12 h-12 rounded-2xl bg-red-50 flex items-center justify-center border border-red-100 shadow-inner">
+<span class="material-symbols-outlined text-red-600 text-2xl" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<div>
+<div class="flex items-center space-x-2">
+<span class="text-title-md font-title-md text-gray-900 font-bold">Pro Capture Engine</span>
+<span class="bg-red-100 text-red-700 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider border border-red-200">Active</span>
+</div>
+<p class="text-body-sm font-body-sm text-gray-500">Hardware Accelerated • H.265 / HEVC</p>
+</div>
+</div>
+<button class="bg-gray-50 hover:bg-gray-100 text-gray-700 px-3 py-1.5 rounded-full text-label-md font-label-md transition-colors duration-150 border border-gray-200 active:scale-95 flex items-center space-x-1">
+<span>Diagnostics</span>
+<span class="material-symbols-outlined text-[16px] text-gray-400">chevron_right</span>
+</button>
+</div>
+<!-- Storage Telemetry Gauge -->
+<div class="mt-4 pt-3 border-t border-gray-100 flex flex-col space-y-2">
+<div class="flex justify-between items-center text-body-sm font-body-sm">
+<span class="text-gray-500 flex items-center space-x-1.5">
+<span class="material-symbols-outlined text-[16px] text-gray-400">sd_card</span>
+<span>Available Storage</span>
+</span>
+<span class="font-headline-sm text-label-lg text-gray-900 font-bold">148.2 GB <span class="text-gray-400 font-normal text-body-sm">/ 256 GB</span></span>
+</div>
+<!-- Segmented bar -->
+<div class="w-full h-2 bg-gray-100 rounded-full overflow-hidden flex">
+<div class="bg-red-600 h-full rounded-full" style="width: 42%;"></div>
+<div class="bg-gray-300 h-full ml-1 rounded-full" style="width: 18%;"></div>
+</div>
+<div class="flex justify-between items-center text-[11px] font-label-sm text-gray-500">
+<span>Recordings: 42.4 GB</span>
+<span>System Cache: 340 MB</span>
+<span class="font-medium text-gray-700">Free: 58%</span>
+</div>
+</div>
+</div>
+<!-- QUICK SEARCH / FILTER BAR -->
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-[20px]">filter_list</span>
+<input class="w-full bg-white pl-11 pr-4 py-2.5 rounded-xl text-body-md font-body-md text-gray-900 placeholder:text-gray-400 border border-gray-200 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 shadow-sm transition-all" placeholder="Filter configuration parameters..." type="text"/>
+</div>
+<!-- SECTION 1: RECORDING DEFAULTS -->
+<div class="space-y-2">
+<div class="px-2 flex items-center justify-between">
+<h2 class="text-label-sm font-label-sm tracking-wider uppercase text-red-600 font-bold flex items-center space-x-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-red-600 inline-block"></span>
+<span>Recording Defaults</span>
+</h2>
+<span class="text-label-sm font-label-sm text-gray-500">Global Presets</span>
+</div>
+<div class="bg-white rounded-2xl divide-y divide-gray-100 border border-gray-200/80 overflow-hidden shadow-sm">
+<!-- Resolution Row -->
+<button class="w-full px-space-md py-3.5 flex items-center justify-between hover:bg-gray-50/80 transition-colors duration-150 text-left active:scale-[0.99]">
+<div class="flex items-center space-x-3.5">
+<div class="w-9 h-9 rounded-xl bg-gray-50 flex items-center justify-center text-gray-700 border border-gray-100">
+<span class="material-symbols-outlined text-[20px]">video_settings</span>
+</div>
+<div>
+<p class="text-title-md font-title-md text-gray-900">Video Resolution</p>
+<p class="text-body-sm font-body-sm text-gray-500">Canvas rendering dimensions</p>
+</div>
+</div>
+<div class="flex items-center space-x-2">
+<span class="text-label-md font-label-md text-gray-700 bg-gray-100 px-2.5 py-1 rounded-full border border-gray-200/60 font-medium">1080p FHD</span>
+<span class="material-symbols-outlined text-gray-400 text-[20px]">chevron_right</span>
+</div>
+</button>
+<!-- Frame Rate Row -->
+<button class="w-full px-space-md py-3.5 flex items-center justify-between hover:bg-gray-50/80 transition-colors duration-150 text-left active:scale-[0.99]">
+<div class="flex items-center space-x-3.5">
+<div class="w-9 h-9 rounded-xl bg-gray-50 flex items-center justify-center text-gray-700 border border-gray-100">
+<span class="material-symbols-outlined text-[20px]">speed</span>
+</div>
+<div>
+<p class="text-title-md font-title-md text-gray-900">Frame Rate (FPS)</p>
+<p class="text-body-sm font-body-sm text-gray-500">Target temporal refresh rate</p>
+</div>
+</div>
+<div class="flex items-center space-x-2">
+<span class="text-label-md font-label-md text-gray-700 bg-gray-100 px-2.5 py-1 rounded-full border border-gray-200/60 font-medium">60 FPS (Constant)</span>
+<span class="material-symbols-outlined text-gray-400 text-[20px]">chevron_right</span>
+</div>
+</button>
+<!-- Video Bitrate Row -->
+<button class="w-full px-space-md py-3.5 flex items-center justify-between hover:bg-gray-50/80 transition-colors duration-150 text-left active:scale-[0.99]">
+<div class="flex items-center space-x-3.5">
+<div class="w-9 h-9 rounded-xl bg-gray-50 flex items-center justify-center text-gray-700 border border-gray-100">
+<span class="material-symbols-outlined text-[20px]">data_usage</span>
+</div>
+<div>
+<p class="text-title-md font-title-md text-gray-900">Video Bitrate</p>
+<p class="text-body-sm font-body-sm text-gray-500">Encoder bandwidth &amp; compression</p>
+</div>
+</div>
+<div class="flex items-center space-x-2">
+<span class="text-label-md font-label-md text-gray-700 bg-gray-100 px-2.5 py-1 rounded-full border border-gray-200/60 font-medium">16 Mbps (Auto)</span>
+<span class="material-symbols-outlined text-gray-400 text-[20px]">chevron_right</span>
+</div>
+</button>
+<!-- Orientation Row -->
+<button class="w-full px-space-md py-3.5 flex items-center justify-between hover:bg-gray-50/80 transition-colors duration-150 text-left active:scale-[0.99]">
+<div class="flex items-center space-x-3.5">
+<div class="w-9 h-9 rounded-xl bg-gray-50 flex items-center justify-center text-gray-700 border border-gray-100">
+<span class="material-symbols-outlined text-[20px]">screen_rotation</span>
+</div>
+<div>
+<p class="text-title-md font-title-md text-gray-900">Orientation</p>
+<p class="text-body-sm font-body-sm text-gray-500">Sensor mapping during rotation</p>
+</div>
+</div>
+<div class="flex items-center space-x-2">
+<span class="text-label-md font-label-md text-gray-700 bg-gray-100 px-2.5 py-1 rounded-full border border-gray-200/60 font-medium">Auto / Match Display</span>
+<span class="material-symbols-outlined text-gray-400 text-[20px]">chevron_right</span>
+</div>
+</button>
+</div>
+</div>
+<!-- SECTION 2: AUDIO & INPUTS -->
+<div class="space-y-2">
+<div class="px-2">
+<h2 class="text-label-sm font-label-sm tracking-wider uppercase text-gray-500 font-bold flex items-center space-x-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-gray-400 inline-block"></span>
+<span>Audio &amp; Inputs</span>
+</h2>
+</div>
+<div class="bg-white rounded-2xl divide-y divide-gray-100 border border-gray-200/80 overflow-hidden shadow-sm">
+<!-- Audio Source -->
+<button class="w-full px-space-md py-3.5 flex items-center justify-between hover:bg-gray-50/80 transition-colors duration-150 text-left active:scale-[0.99]">
+<div class="flex items-center space-x-3.5">
+<div class="w-9 h-9 rounded-xl bg-gray-50 flex items-center justify-center text-gray-700 border border-gray-100">
+<span class="material-symbols-outlined text-[20px]">mic</span>
+</div>
+<div>
+<p class="text-title-md font-title-md text-gray-900">Audio Source</p>
+<p class="text-body-sm font-body-sm text-gray-500">Audio stream multiplexing</p>
+</div>
+</div>
+<div class="flex items-center space-x-2">
+<span class="text-label-md font-label-md text-gray-700 bg-gray-100 px-2.5 py-1 rounded-full border border-gray-200/60 font-medium">Internal Audio + Mic</span>
+<span class="material-symbols-outlined text-gray-400 text-[20px]">chevron_right</span>
+</div>
+</button>
+<!-- Audio Quality / Sampling -->
+<button class="w-full px-space-md py-3.5 flex items-center justify-between hover:bg-gray-50/80 transition-colors duration-150 text-left active:scale-[0.99]">
+<div class="flex items-center space-x-3.5">
+<div class="w-9 h-9 rounded-xl bg-gray-50 flex items-center justify-center text-gray-700 border border-gray-100">
+<span class="material-symbols-outlined text-[20px]">graphic_eq</span>
+</div>
+<div>
+<p class="text-title-md font-title-md text-gray-900">Audio Quality / Sampling</p>
+<p class="text-body-sm font-body-sm text-gray-500">PCM audio fidelity specification</p>
+</div>
+</div>
+<div class="flex items-center space-x-2">
+<span class="text-label-md font-label-md text-gray-700 bg-gray-100 px-2.5 py-1 rounded-full border border-gray-200/60 font-medium">48 kHz Stereo (AAC)</span>
+<span class="material-symbols-outlined text-gray-400 text-[20px]">chevron_right</span>
+</div>
+</button>
+<!-- Microphone Gain Boost (Toggle ON) -->
+<div class="w-full px-space-md py-3.5 flex items-center justify-between">
+<div class="flex items-center space-x-3.5">
+<div class="w-9 h-9 rounded-xl bg-gray-50 flex items-center justify-center text-gray-700 border border-gray-100">
+<span class="material-symbols-outlined text-[20px]">volume_up</span>
+</div>
+<div>
+<p class="text-title-md font-title-md text-gray-900">Microphone Gain Boost</p>
+<p class="text-body-sm font-body-sm text-gray-500">+6dB clean pre-amplification</p>
+</div>
+</div>
+<!-- Toggle Switch: ON -->
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-12 h-6 bg-gray-200 border border-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-6 peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all after:shadow-sm peer-checked:bg-red-600"></div>
+</label>
+</div>
+<!-- Noise Suppression (Toggle ON) -->
+<div class="w-full px-space-md py-3.5 flex items-center justify-between">
+<div class="flex items-center space-x-3.5">
+<div class="w-9 h-9 rounded-xl bg-gray-50 flex items-center justify-center text-gray-700 border border-gray-100">
+<span class="material-symbols-outlined text-[20px]">noise_control_off</span>
+</div>
+<div>
+<p class="text-title-md font-title-md text-gray-900">Noise Suppression</p>
+<p class="text-body-sm font-body-sm text-gray-500">Neural voice isolation algorithm</p>
+</div>
+</div>
+<!-- Toggle Switch: ON -->
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-12 h-6 bg-gray-200 border border-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-6 peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all after:shadow-sm peer-checked:bg-red-600"></div>
+</label>
+</div>
+</div>
+</div>
+<!-- SECTION 3: FACECAM & OVERLAY -->
+<div class="space-y-2">
+<div class="px-2">
+<h2 class="text-label-sm font-label-sm tracking-wider uppercase text-gray-500 font-bold flex items-center space-x-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-gray-400 inline-block"></span>
+<span>Facecam &amp; Overlay</span>
+</h2>
+</div>
+<div class="bg-white rounded-2xl divide-y divide-gray-100 border border-gray-200/80 overflow-hidden shadow-sm">
+<!-- Enable Facecam (Toggle ON) -->
+<div class="w-full px-space-md py-3.5 flex items-center justify-between">
+<div class="flex items-center space-x-3.5">
+<div class="w-9 h-9 rounded-xl bg-gray-50 flex items-center justify-center text-gray-700 border border-gray-100">
+<span class="material-symbols-outlined text-[20px]">face</span>
+</div>
+<div>
+<p class="text-title-md font-title-md text-gray-900">Enable Facecam</p>
+<p class="text-body-sm font-body-sm text-gray-500">Front camera picture-in-picture</p>
+</div>
+</div>
+<!-- Toggle Switch: ON -->
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-12 h-6 bg-gray-200 border border-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-6 peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all after:shadow-sm peer-checked:bg-red-600"></div>
+</label>
+</div>
+<!-- Facecam Window Shape -->
+<button class="w-full px-space-md py-3.5 flex items-center justify-between hover:bg-gray-50/80 transition-colors duration-150 text-left active:scale-[0.99]">
+<div class="flex items-center space-x-3.5">
+<div class="w-9 h-9 rounded-xl bg-gray-50 flex items-center justify-center text-gray-700 border border-gray-100">
+<span class="material-symbols-outlined text-[20px]">aspect_ratio</span>
+</div>
+<div>
+<p class="text-title-md font-title-md text-gray-900">Facecam Window Shape</p>
+<p class="text-body-sm font-body-sm text-gray-500">Geometry &amp; border framing</p>
+</div>
+</div>
+<div class="flex items-center space-x-2">
+<span class="text-label-md font-label-md text-gray-700 bg-gray-100 px-2.5 py-1 rounded-full border border-gray-200/60 font-medium">Circle (PiP)</span>
+<span class="material-symbols-outlined text-gray-400 text-[20px]">chevron_right</span>
+</div>
+</button>
+<!-- Show Touches / Taps (Toggle OFF) -->
+<div class="w-full px-space-md py-3.5 flex items-center justify-between">
+<div class="flex items-center space-x-3.5">
+<div class="w-9 h-9 rounded-xl bg-gray-50 flex items-center justify-center text-gray-700 border border-gray-100">
+<span class="material-symbols-outlined text-[20px]">touch_app</span>
+</div>
+<div>
+<p class="text-title-md font-title-md text-gray-900">Show Touches / Taps</p>
+<p class="text-body-sm font-body-sm text-gray-500">Render visual tap indicators</p>
+</div>
+</div>
+<!-- Toggle Switch: OFF -->
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-12 h-6 bg-gray-200 border border-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-6 peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all after:shadow-sm peer-checked:bg-red-600"></div>
+</label>
+</div>
+<!-- Floating Control Widget (Toggle ON) -->
+<div class="w-full px-space-md py-3.5 flex items-center justify-between">
+<div class="flex items-center space-x-3.5">
+<div class="w-9 h-9 rounded-xl bg-gray-50 flex items-center justify-center text-gray-700 border border-gray-100">
+<span class="material-symbols-outlined text-[20px]">widgets</span>
+</div>
+<div>
+<p class="text-title-md font-title-md text-gray-900">Floating Control Widget</p>
+<p class="text-body-sm font-body-sm text-gray-500">Quick access recorder overlay (FRO)</p>
+</div>
+</div>
+<!-- Toggle Switch: ON -->
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-12 h-6 bg-gray-200 border border-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-6 peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all after:shadow-sm peer-checked:bg-red-600"></div>
+</label>
+</div>
+</div>
+</div>
+<!-- SECTION 4: STORAGE & EXPORT -->
+<div class="space-y-2">
+<div class="px-2">
+<h2 class="text-label-sm font-label-sm tracking-wider uppercase text-gray-500 font-bold flex items-center space-x-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-gray-400 inline-block"></span>
+<span>Storage &amp; Export</span>
+</h2>
+</div>
+<div class="bg-white rounded-2xl divide-y divide-gray-100 border border-gray-200/80 overflow-hidden shadow-sm">
+<!-- Default Save Path -->
+<button class="w-full px-space-md py-3.5 flex items-center justify-between hover:bg-gray-50/80 transition-colors duration-150 text-left active:scale-[0.99]">
+<div class="flex items-center space-x-3.5 min-w-0 pr-2">
+<div class="w-9 h-9 rounded-xl bg-gray-50 flex-shrink-0 flex items-center justify-center text-gray-700 border border-gray-100">
+<span class="material-symbols-outlined text-[20px]">folder</span>
+</div>
+<div class="truncate">
+<p class="text-title-md font-title-md text-gray-900">Default Save Path</p>
+<p class="text-body-sm font-body-sm text-gray-500 truncate font-mono text-xs">/Movies/ConsolidatedRecorder</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-gray-400 text-[20px] flex-shrink-0">chevron_right</span>
+</button>
+<!-- Auto-Sync to Cloud Vault (Toggle OFF) -->
+<div class="w-full px-space-md py-3.5 flex items-center justify-between">
+<div class="flex items-center space-x-3.5">
+<div class="w-9 h-9 rounded-xl bg-gray-50 flex items-center justify-center text-gray-700 border border-gray-100">
+<span class="material-symbols-outlined text-[20px]">cloud_upload</span>
+</div>
+<div>
+<p class="text-title-md font-title-md text-gray-900">Auto-Sync to Cloud Vault</p>
+<p class="text-body-sm font-body-sm text-gray-500">Encrypted background backup</p>
+</div>
+</div>
+<!-- Toggle Switch: OFF -->
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-12 h-6 bg-gray-200 border border-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-6 peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all after:shadow-sm peer-checked:bg-red-600"></div>
+</label>
+</div>
+<!-- Clear Cache -->
+<button class="w-full px-space-md py-3.5 flex items-center justify-between hover:bg-gray-50/80 transition-colors duration-150 text-left active:scale-[0.99]">
+<div class="flex items-center space-x-3.5">
+<div class="w-9 h-9 rounded-xl bg-gray-50 flex items-center justify-center text-gray-700 border border-gray-100">
+<span class="material-symbols-outlined text-[20px]">cleaning_services</span>
+</div>
+<div>
+<p class="text-title-md font-title-md text-gray-900">Clear Cache (340 MB)</p>
+<p class="text-body-sm font-body-sm text-gray-500">Purge temporary preview renders</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-gray-400 text-[20px]">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- SECTION 5: APPEARANCE -->
+<div class="space-y-2">
+<div class="px-2">
+<h2 class="text-label-sm font-label-sm tracking-wider uppercase text-gray-500 font-bold flex items-center space-x-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-gray-400 inline-block"></span>
+<span>Appearance</span>
+</h2>
+</div>
+<div class="bg-white rounded-2xl divide-y divide-gray-100 border border-gray-200/80 overflow-hidden shadow-sm">
+<!-- App Theme Pill Selector -->
+<div class="w-full px-space-md py-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+<div class="flex items-center space-x-3.5">
+<div class="w-9 h-9 rounded-xl bg-gray-50 flex items-center justify-center text-gray-700 border border-gray-100">
+<span class="material-symbols-outlined text-[20px]">palette</span>
+</div>
+<div>
+<p class="text-title-md font-title-md text-gray-900">App Theme</p>
+<p class="text-body-sm font-body-sm text-gray-500">Interface styling paradigm</p>
+</div>
+</div>
+<!-- Segmented Pill Selector (Clean light mode) -->
+<div class="bg-gray-100 p-1 rounded-full flex items-center border border-gray-200 self-start sm:self-auto">
+<button class="px-3.5 py-1 text-label-md font-label-md rounded-full bg-white text-gray-900 font-semibold shadow-sm border border-gray-200 flex items-center space-x-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-red-600"></span>
+<span>Light</span>
+</button>
+<button class="px-3 py-1 text-label-md font-label-md rounded-full text-gray-500 hover:text-gray-900 transition-colors duration-150">Obsidian</button>
+<button class="px-3 py-1 text-label-md font-label-md rounded-full text-gray-500 hover:text-gray-900 transition-colors duration-150">System</button>
+</div>
+</div>
+<!-- Haptic Feedback (Toggle ON) -->
+<div class="w-full px-space-md py-3.5 flex items-center justify-between">
+<div class="flex items-center space-x-3.5">
+<div class="w-9 h-9 rounded-xl bg-gray-50 flex items-center justify-center text-gray-700 border border-gray-100">
+<span class="material-symbols-outlined text-[20px]">vibration</span>
+</div>
+<div>
+<p class="text-title-md font-title-md text-gray-900">Haptic Feedback</p>
+<p class="text-body-sm font-body-sm text-gray-500">Tactile responses on triggers &amp; stops</p>
+</div>
+</div>
+<!-- Toggle Switch: ON -->
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-12 h-6 bg-gray-200 border border-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-6 peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all after:shadow-sm peer-checked:bg-red-600"></div>
+</label>
+</div>
+</div>
+</div>
+<!-- SECTION 6: ABOUT & LEGAL -->
+<div class="space-y-2">
+<div class="px-2">
+<h2 class="text-label-sm font-label-sm tracking-wider uppercase text-gray-500 font-bold flex items-center space-x-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-gray-400 inline-block"></span>
+<span>About &amp; Legal</span>
+</h2>
+</div>
+<div class="bg-white rounded-2xl divide-y divide-gray-100 border border-gray-200/80 overflow-hidden shadow-sm">
+<!-- Privacy Policy -->
+<button class="w-full px-space-md py-3.5 flex items-center justify-between hover:bg-gray-50/80 transition-colors duration-150 text-left active:scale-[0.99]">
+<div class="flex items-center space-x-3.5">
+<div class="w-9 h-9 rounded-xl bg-gray-50 flex items-center justify-center text-gray-700 border border-gray-100">
+<span class="material-symbols-outlined text-[20px]">security</span>
+</div>
+<span class="text-title-md font-title-md text-gray-900">Privacy Policy</span>
+</div>
+<span class="material-symbols-outlined text-gray-400 text-[20px]">chevron_right</span>
+</button>
+<!-- Terms of Service -->
+<button class="w-full px-space-md py-3.5 flex items-center justify-between hover:bg-gray-50/80 transition-colors duration-150 text-left active:scale-[0.99]">
+<div class="flex items-center space-x-3.5">
+<div class="w-9 h-9 rounded-xl bg-gray-50 flex items-center justify-center text-gray-700 border border-gray-100">
+<span class="material-symbols-outlined text-[20px]">description</span>
+</div>
+<span class="text-title-md font-title-md text-gray-900">Terms of Service</span>
+</div>
+<span class="material-symbols-outlined text-gray-400 text-[20px]">chevron_right</span>
+</button>
+<!-- Rate on Play Store -->
+<button class="w-full px-space-md py-3.5 flex items-center justify-between hover:bg-gray-50/80 transition-colors duration-150 text-left active:scale-[0.99]">
+<div class="flex items-center space-x-3.5">
+<div class="w-9 h-9 rounded-xl bg-gray-50 flex items-center justify-center text-gray-700 border border-gray-100">
+<span class="material-symbols-outlined text-[20px]">star_rate</span>
+</div>
+<span class="text-title-md font-title-md text-gray-900">Rate on Play Store</span>
+</div>
+<span class="material-symbols-outlined text-gray-400 text-[20px]">chevron_right</span>
+</button>
+<!-- App Version -->
+<div class="w-full px-space-md py-3.5 flex items-center justify-between">
+<div class="flex items-center space-x-3.5">
+<div class="w-9 h-9 rounded-xl bg-gray-50 flex items-center justify-center text-gray-700 border border-gray-100">
+<span class="material-symbols-outlined text-[20px]">info</span>
+</div>
+<span class="text-title-md font-title-md text-gray-900">App Version</span>
+</div>
+<span class="text-label-md font-label-md text-gray-500 font-mono">v3.2.4 (Build 840)</span>
+</div>
+</div>
+</div>
+<!-- Quick Footer Note -->
+<div class="pt-2 pb-6 text-center space-y-1">
+<p class="text-[11px] font-label-sm text-gray-500 uppercase tracking-widest font-semibold">Consolidated Media Engine • Pro Suite</p>
+<p class="text-[10px] text-gray-400">Designed with low-latency GPU encoders for Android 14+</p>
+</div>
+</main>
+<!-- BOTTOM NAVIGATION BAR (Light Mode with Subtle Top Border) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-margin-compact py-space-xs pb-safe bg-white/95 backdrop-blur-md border-t border-gray-200 shadow-[0_-4px_20px_rgba(0,0,0,0.03)]">
+<!-- Home (Inactive) -->
+<button aria-label="Home" class="flex flex-col items-center justify-center text-gray-500 px-space-md py-space-xs hover:text-gray-900 transition-colors duration-150 active:scale-95">
+<span class="material-symbols-outlined text-[22px]">videocam</span>
+<span class="text-label-sm font-label-sm mt-0.5 font-medium">Home</span>
+</button>
+<!-- Recordings (Inactive) -->
+<button aria-label="Recordings" class="flex flex-col items-center justify-center text-gray-500 px-space-md py-space-xs hover:text-gray-900 transition-colors duration-150 active:scale-95">
+<span class="material-symbols-outlined text-[22px]">folder_open</span>
+<span class="text-label-sm font-label-sm mt-0.5 font-medium">Recordings</span>
+</button>
+<!-- Tools (Inactive) -->
+<button aria-label="Tools" class="flex flex-col items-center justify-center text-gray-500 px-space-md py-space-xs hover:text-gray-900 transition-colors duration-150 active:scale-95">
+<span class="material-symbols-outlined text-[22px]">auto_fix_high</span>
+<span class="text-label-sm font-label-sm mt-0.5 font-medium">Tools</span>
+</button>
+<!-- Settings (ACTIVE MATCH -> Light mode active navigation pill) -->
+<button aria-current="page" aria-label="Settings" class="flex flex-col items-center justify-center bg-red-50 text-red-600 rounded-full px-space-md py-space-xs transition-colors duration-150 active:scale-95">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="text-label-sm font-label-sm mt-0.5 font-bold">Settings</span>
+</button>
+</nav>
+</body></html>

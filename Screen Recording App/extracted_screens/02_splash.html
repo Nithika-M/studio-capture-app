@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+<title>Consolidated Screen Recorder - Launch</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "inverse-surface": "#111319",
+            "surface-dim": "#f1f3f9",
+            "on-secondary": "#ffffff",
+            "surface-bright": "#ffffff",
+            "surface-variant": "#f3f4f6",
+            "secondary": "#4b5563",
+            "on-tertiary-fixed": "#410004",
+            "on-primary-container": "#ffffff",
+            "secondary-container": "#e5e7eb",
+            "primary-fixed": "#ffdad6",
+            "on-primary-fixed": "#410002",
+            "on-secondary-fixed-variant": "#39485a",
+            "surface-tint": "#dc2626",
+            "secondary-fixed-dim": "#b9c8de",
+            "error": "#dc2626",
+            "tertiary": "#dc2626",
+            "tertiary-fixed": "#ffdad7",
+            "on-tertiary": "#ffffff",
+            "on-primary": "#ffffff",
+            "primary-fixed-dim": "#ffb4ab",
+            "primary-container": "#dc2626",
+            "on-surface": "#111827",
+            "on-secondary-container": "#1f2937",
+            "tertiary-fixed-dim": "#ffb3ad",
+            "secondary-fixed": "#d4e4fa",
+            "surface-container-high": "#ffffff",
+            "surface-container": "#f8f9fc",
+            "primary": "#dc2626",
+            "on-surface-variant": "#4b5563",
+            "background": "#fafafc",
+            "outline-variant": "#e5e7eb",
+            "on-error": "#ffffff",
+            "tertiary-container": "#fee2e2",
+            "outline": "#d1d5db",
+            "on-tertiary-fixed-variant": "#930013",
+            "surface-container-low": "#ffffff",
+            "on-error-container": "#991b1b",
+            "on-secondary-fixed": "#0d1c2d",
+            "on-primary-fixed-variant": "#93000b",
+            "inverse-primary": "#ffb4ab",
+            "on-tertiary-container": "#991b1b",
+            "error-container": "#fee2e2",
+            "inverse-on-surface": "#f8f9fa",
+            "surface": "#ffffff",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-highest": "#f3f4f6",
+            "on-background": "#111827"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter-sm": "0.75rem",
+            "space-xl": "2rem",
+            "space-xs": "0.25rem",
+            "margin": "1.25rem",
+            "gutter": "1rem",
+            "space-md": "1rem",
+            "margin-compact": "1rem",
+            "space-lg": "1.5rem",
+            "space-sm": "0.5rem"
+          },
+          "fontFamily": {
+            "label-md": ["Hanken Grotesk"],
+            "headline-md": ["Manrope"],
+            "headline-lg-mobile": ["Manrope"],
+            "headline-sm": ["Manrope"],
+            "title-md": ["Hanken Grotesk"],
+            "label-lg": ["Hanken Grotesk"],
+            "body-lg": ["Hanken Grotesk"],
+            "body-md": ["Hanken Grotesk"],
+            "title-lg": ["Hanken Grotesk"],
+            "headline-lg": ["Manrope"],
+            "display-lg": ["Manrope"],
+            "label-sm": ["Hanken Grotesk"],
+            "body-sm": ["Hanken Grotesk"]
+          },
+          "fontSize": {
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-lg-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "letterSpacing": "0", "fontWeight": "600" }],
+            "title-md": ["16px", { "lineHeight": "24px", "letterSpacing": "0.005em", "fontWeight": "600" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0", "fontWeight": "400" }],
+            "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0", "fontWeight": "400" }],
+            "title-lg": ["18px", { "lineHeight": "26px", "letterSpacing": "0", "fontWeight": "600" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "display-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+            "label-sm": ["10px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600" }],
+            "body-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "400" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    @keyframes pulse-halo {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 0.18;
+      }
+      50% {
+        transform: scale(1.15);
+        opacity: 0.35;
+      }
+    }
+
+    @keyframes pulse-ring {
+      0% {
+        transform: scale(0.92);
+        opacity: 0.6;
+      }
+      50% {
+        transform: scale(1.06);
+        opacity: 0.15;
+      }
+      100% {
+        transform: scale(0.92);
+        opacity: 0.6;
+      }
+    }
+
+    @keyframes progress-glide {
+      0% {
+        left: -40%;
+        width: 30%;
+      }
+      50% {
+        left: 30%;
+        width: 50%;
+      }
+      100% {
+        left: 100%;
+        width: 30%;
+      }
+    }
+
+    .pulse-halo-effect {
+      animation: pulse-halo 3s ease-in-out infinite;
+    }
+
+    .pulse-ring-effect {
+      animation: pulse-ring 2.4s ease-in-out infinite;
+    }
+
+    .progress-glide-bar {
+      animation: progress-glide 1.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-[#F8F9FA] text-[#111827] antialiased overflow-hidden select-none min-h-screen flex items-center justify-center">
+<!-- Mobile Device Simulation Frame (390x844 max width container) -->
+<main class="relative w-full max-w-[390px] h-[844px] max-h-screen bg-[#FAFAFC] flex flex-col justify-between items-center px-margin-compact py-space-xl overflow-hidden shadow-2xl border border-black/[0.06]">
+<!-- Ambient Red Studio Glow behind Center Hero -->
+<div class="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] h-[340px] bg-red-500/15 rounded-full blur-[90px] pulse-halo-effect"></div>
+<div class="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[180px] h-[180px] bg-red-400/20 rounded-full blur-[50px]"></div>
+<!-- Background Technical Grid Overlay (Ultra-subtle clean studio feel) -->
+<div class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(220,38,38,0.04)_0%,transparent_70%)]"></div>
+<!-- Top Status Indicator & Studio Mode Pill (Minimal Header Element) -->
+<header class="relative z-10 w-full pt-space-md flex items-center justify-between px-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="inline-block w-2 h-2 rounded-full bg-red-600 animate-ping"></span>
+<span class="inline-block w-2 h-2 rounded-full bg-red-600 -ml-2.5"></span>
+<span class="font-label-sm text-label-sm text-gray-700 font-semibold tracking-widest uppercase ml-1">Engine Initializing</span>
+</div>
+<div class="flex items-center gap-1.5 px-space-sm py-0.5 rounded-full bg-white/90 border border-black/[0.08] shadow-sm backdrop-blur-md">
+<span class="material-symbols-outlined text-[13px] text-gray-600">hdr_on_select</span>
+<span class="font-label-sm text-label-sm text-gray-700 uppercase font-semibold tracking-wider">Studio Pro</span>
+</div>
+</header>
+<!-- Center Hero Branding Unit -->
+<section class="relative z-10 flex flex-col items-center justify-center text-center -mt-space-lg w-full px-space-sm">
+<!-- Squircle App Icon Container with Glassmorphism & Red Pulse Ring -->
+<div class="relative flex items-center justify-center mb-space-lg">
+<!-- Outer Glowing Pulse Ring -->
+<div class="absolute -inset-3.5 rounded-[2.6rem] border border-red-500/25 pulse-ring-effect pointer-events-none"></div>
+<div class="absolute -inset-7 rounded-[3.2rem] border border-red-500/15 pulse-ring-effect pointer-events-none" style="animation-delay: 0.6s;"></div>
+<!-- Studio App Icon Squircle Box -->
+<div class="relative w-28 h-28 rounded-lg bg-gradient-to-b from-white to-gray-50 p-[1px] shadow-[0_16px_36px_-8px_rgba(0,0,0,0.12),0_0_28px_rgba(220,38,38,0.18)] ring-1 ring-black/[0.08]">
+<div class="w-full h-full rounded-[1.95rem] bg-gradient-to-b from-white to-[#F8F9FC] flex items-center justify-center relative overflow-hidden backdrop-blur-xl border border-white">
+<!-- Top specular edge reflection -->
+<div class="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-black/10 to-transparent"></div>
+<!-- Internal Lens Circle Pattern -->
+<div class="w-16 h-16 rounded-full border border-black/[0.06] flex items-center justify-center relative bg-white shadow-inner">
+<!-- Subtle Red Accent Orbit -->
+<div class="absolute inset-1 rounded-full border border-red-500/30"></div>
+<!-- Vibrant Center Record Symbol -->
+<div class="relative w-7 h-7 rounded-full bg-[#DC2626] shadow-[0_0_16px_rgba(220,38,38,0.7)] flex items-center justify-center">
+<!-- Inner High-Tech Record Core -->
+<div class="w-2.5 h-2.5 rounded-[3px] bg-white shadow-sm"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- App Name & Identity -->
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-[#111827] font-bold tracking-tight mb-space-xs text-balance">
+        Consolidated Screen Recorder
+      </h1>
+<!-- Subtitle / Tagline -->
+<p class="font-label-lg text-label-lg text-[#4B5563] tracking-widest font-medium mb-space-md opacity-90">
+        Pro Capture &amp; Screen Studio
+      </p>
+<!-- Tech Specs Pill Badge -->
+<div class="inline-flex items-center gap-space-sm px-space-md py-space-xs rounded-full bg-white/95 border border-black/[0.08] backdrop-blur-md shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-[#DC2626] shadow-[0_0_6px_rgba(220,38,38,0.75)]"></span>
+<span class="font-label-sm text-label-sm text-[#1F2937] font-semibold tracking-wide">
+          FHD <span class="text-gray-400 mx-1">•</span> 120 FPS <span class="text-gray-400 mx-1">•</span> Lossless Audio
+        </span>
+</div>
+</section>
+<!-- Bottom Launch & Loading Section -->
+<footer class="relative z-10 w-full flex flex-col items-center gap-space-md pb-space-sm">
+<!-- Minimalist Glowing Indeterminate Loader Bar -->
+<div class="w-48 h-1 bg-gray-200 rounded-full overflow-hidden relative shadow-inner">
+<div class="absolute top-0 bottom-0 bg-gradient-to-r from-transparent via-[#DC2626] to-red-400 progress-glide-bar rounded-full shadow-[0_0_8px_rgba(220,38,38,0.6)]"></div>
+</div>
+<!-- Dynamic Status Text -->
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[15px] text-[#DC2626] animate-spin" style="animation-duration: 2.5s;">sync</span>
+<p class="font-label-md text-label-md text-[#4B5563] font-medium tracking-wide">
+          Initializing capture engine...
+        </p>
+</div>
+<!-- App Version Footnote & Safe Area Spacer -->
+<div class="pt-space-xs">
+<span class="font-label-sm text-label-sm text-[#6B7280] tracking-widest uppercase">
+          v2.4.0 <span class="mx-1 opacity-40">•</span> Studio Edition
+        </span>
+</div>
+<!-- Home Indicator Line for Device Authenticity -->
+<div class="w-32 h-1 bg-black/20 rounded-full mt-space-xs"></div>
+</footer>
+</main>
+<!-- Interactive script to simulate engine initialization readiness -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const statusText = document.querySelector('footer p');
+      const messages = [
+        'Initializing capture engine...',
+        'Calibrating 120 FPS render buffer...',
+        'Configuring lossless audio bus...',
+        'Ready to record'
+      ];
+      
+      let index = 0;
+      const interval = setInterval(() => {
+        index++;
+        if (index < messages.length) {
+          if (statusText) {
+            statusText.textContent = messages[index];
+            if (index === messages.length - 1) {
+              const spinner = statusText.previousElementSibling;
+              if (spinner) {
+                spinner.textContent = 'check_circle';
+                spinner.classList.remove('animate-spin');
+                spinner.classList.add('text-[#DC2626]');
+              }
+            }
+          }
+        } else {
+          clearInterval(interval);
+        }
+      }, 1100);
+    });
+  </script>
+</body></html>
+
+3. Onboarding Screen :

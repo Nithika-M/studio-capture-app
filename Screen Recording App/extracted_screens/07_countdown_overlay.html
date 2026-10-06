@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+
+<html class="" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pre-Recording Countdown | Studio Capture</title>
+<!-- Google Fonts: Manrope & Hanken Grotesk -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=Manrope:wght@500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Theme Configuration verbatim from instructions -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-variant": "#33343b",
+            "on-secondary": "#233143",
+            "surface-dim": "#111319",
+            "on-tertiary": "#68000a",
+            "outline": "#ac8884",
+            "outline-variant": "#5c403c",
+            "on-tertiary-container": "#fff6f5",
+            "tertiary-fixed-dim": "#ffb3ad",
+            "surface-tint": "#ffb4ab",
+            "surface-container-high": "#282a30",
+            "surface-container-lowest": "#0c0e14",
+            "surface-container": "#1e1f26",
+            "background": "#111319",
+            "inverse-primary": "#bf0715",
+            "error": "#ffb4ab",
+            "on-error": "#690005",
+            "on-primary": "#690005",
+            "on-secondary-container": "#a7b6cc",
+            "on-secondary-fixed-variant": "#39485a",
+            "surface-container-low": "#191b22",
+            "on-background": "#e2e2eb",
+            "tertiary": "#ffb3ad",
+            "tertiary-container": "#d63135",
+            "inverse-on-surface": "#2e3037",
+            "on-primary-fixed": "#410002",
+            "inverse-surface": "#e2e2eb",
+            "on-tertiary-fixed": "#410004",
+            "surface": "#111319",
+            "secondary-fixed": "#d4e4fa",
+            "secondary": "#b9c8de",
+            "on-primary-fixed-variant": "#93000b",
+            "secondary-container": "#39485a",
+            "error-container": "#93000a",
+            "surface-bright": "#373940",
+            "on-surface-variant": "#e6bdb8",
+            "on-tertiary-fixed-variant": "#930013",
+            "on-secondary-fixed": "#0d1c2d",
+            "primary-fixed": "#ffdad6",
+            "primary-fixed-dim": "#ffb4ab",
+            "on-primary-container": "#fff6f5",
+            "primary-container": "#dc2626",
+            "surface-container-highest": "#33343b",
+            "primary": "#ffb4ab",
+            "on-error-container": "#ffdad6",
+            "on-surface": "#e2e2eb",
+            "secondary-fixed-dim": "#b9c8de",
+            "tertiary-fixed": "#ffdad7"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter-sm": "0.75rem",
+            "space-xl": "2rem",
+            "margin": "1.25rem",
+            "gutter": "1rem",
+            "space-lg": "1.5rem",
+            "space-sm": "0.5rem",
+            "margin-compact": "1rem",
+            "space-md": "1rem",
+            "space-xs": "0.25rem"
+          },
+          "fontFamily": {
+            "body-md": ["Hanken Grotesk"],
+            "title-lg": ["Hanken Grotesk"],
+            "headline-lg-mobile": ["Manrope"],
+            "body-sm": ["Hanken Grotesk"],
+            "headline-sm": ["Manrope"],
+            "body-lg": ["Hanken Grotesk"],
+            "headline-md": ["Manrope"],
+            "headline-lg": ["Manrope"],
+            "display-lg": ["Manrope"],
+            "label-sm": ["Hanken Grotesk"],
+            "label-md": ["Hanken Grotesk"],
+            "label-lg": ["Hanken Grotesk"],
+            "title-md": ["Hanken Grotesk"]
+          },
+          "fontSize": {
+            "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0", "fontWeight": "400" }],
+            "title-lg": ["18px", { "lineHeight": "26px", "letterSpacing": "0", "fontWeight": "600" }],
+            "headline-lg-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "body-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "letterSpacing": "0", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0", "fontWeight": "400" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "display-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+            "label-sm": ["10px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "title-md": ["16px", { "lineHeight": "24px", "letterSpacing": "0.005em", "fontWeight": "600" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    @keyframes pulseGlow {
+      0%, 100% {
+        box-shadow: 0 0 35px rgba(220, 38, 38, 0.4), 0 0 75px rgba(220, 38, 38, 0.15);
+        transform: scale(1);
+      }
+      50% {
+        box-shadow: 0 0 60px rgba(220, 38, 38, 0.65), 0 0 120px rgba(220, 38, 38, 0.3);
+        transform: scale(1.025);
+      }
+    }
+    .pulse-glow {
+      animation: pulseGlow 1.8s ease-in-out infinite;
+    }
+    @keyframes indicatorPulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.35; transform: scale(0.85); }
+    }
+    .live-dot {
+      animation: indicatorPulse 1.2s ease-in-out infinite;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-900 antialiased overflow-hidden select-none">
+<!-- Underneath Simulating Mobile Phone Screen / Device Interface -->
+<div class="fixed inset-0 pointer-events-none opacity-20 filter blur-sm scale-105 transform"><div class="w-full h-full flex flex-col justify-between p-margin-compact bg-slate-100"><div class="grid grid-cols-4 gap-gutter-sm pt-space-xl"><div class="aspect-square rounded-DEFAULT bg-white border border-slate-200/80 shadow-sm flex items-center justify-center"><span class="material-symbols-outlined text-slate-500" data-icon="terminal">terminal</span></div><div class="aspect-square rounded-DEFAULT bg-white border border-slate-200/80 shadow-sm flex items-center justify-center"><span class="material-symbols-outlined text-slate-500" data-icon="videocam">videocam</span></div><div class="aspect-square rounded-DEFAULT bg-white border border-slate-200/80 shadow-sm flex items-center justify-center"><span class="material-symbols-outlined text-slate-500" data-icon="mic">mic</span></div><div class="aspect-square rounded-DEFAULT bg-white border border-slate-200/80 shadow-sm flex items-center justify-center"><span class="material-symbols-outlined text-slate-500" data-icon="analytics">analytics</span></div></div><div class="space-y-space-md py-space-xl"><div class="h-32 rounded-lg bg-white border border-slate-200 p-space-md shadow-sm"><div class="w-24 h-4 rounded-full bg-slate-200 mb-space-sm"></div><div class="w-48 h-3 rounded-full bg-slate-100"></div></div><div class="h-28 rounded-lg bg-white border border-slate-200 p-space-md shadow-sm"><div class="w-32 h-4 rounded-full bg-slate-200 mb-space-sm"></div><div class="w-36 h-3 rounded-full bg-slate-100"></div></div></div><div class="h-16 rounded-full bg-slate-200 mb-space-lg mx-auto w-3/4"></div></div></div>
+<!-- Primary Countdown Overlay Shell (Full Screen Semi-transparent) -->
+<main class="fixed inset-0 z-50 flex flex-col justify-between items-center px-margin-compact py-space-lg bg-[#F8F9FA]/95 backdrop-blur-md transition-all duration-300">
+<!-- Top Studio Arming Telemetry HUD -->
+<header class="w-full max-w-sm flex items-center justify-between pt-space-xs"><div class="flex items-center gap-space-sm bg-white/95 border border-slate-200 px-space-md py-space-xs rounded-full shadow-sm"><span class="relative flex h-2.5 w-2.5"><span class="live-dot absolute inline-flex h-full w-full rounded-full bg-red-600 opacity-75"></span><span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-600"></span></span><span class="font-label-sm text-label-sm text-slate-900 font-bold uppercase tracking-wider">CAPTURE ARMED</span><span class="text-slate-300 font-bold">•</span><span class="font-label-sm text-label-sm text-slate-600 font-medium tracking-tight">1080P 60FPS</span></div><div class="flex items-center gap-space-xs bg-white/95 border border-slate-200 px-space-sm py-space-xs rounded-full shadow-sm"><span class="material-symbols-outlined text-slate-600" data-icon="graphic_eq" style="font-size: 15px;">graphic_eq</span><div class="flex items-center gap-0.5"><span class="w-1 h-3 rounded-full bg-slate-700"></span><span class="w-1 h-3 rounded-full bg-slate-700"></span><span class="w-1 h-4 rounded-full bg-slate-700"></span><span class="w-1 h-2 rounded-full bg-red-600 live-dot"></span></div></div></header>
+<!-- Center Hero Focal Point: Dramatic Countdown Display -->
+<section class="flex flex-col items-center justify-center text-center my-auto relative w-full"><div class="absolute w-72 h-72 rounded-full bg-red-500/10 filter blur-3xl pointer-events-none -z-10 animate-pulse"></div><div class="relative flex items-center justify-center w-52 h-52 rounded-full border-2 border-red-500/30 bg-white/90 shadow-xl shadow-red-500/10 backdrop-blur-xl pulse-glow mb-space-lg"><div class="absolute top-2 w-2 h-0.5 bg-red-600"></div><div class="absolute bottom-2 w-2 h-0.5 bg-red-600"></div><div class="absolute left-2 h-2 w-0.5 bg-red-600"></div><div class="absolute right-2 h-2 w-0.5 bg-red-600"></div><span class="font-headline-lg-mobile text-[96px] leading-none font-extrabold text-red-600 tracking-tighter drop-shadow-[0_4px_16px_rgba(220,38,38,0.35)] transition-all duration-300" id="countdown-number">1</span></div><div class="space-y-space-xs"><h2 class="font-title-lg text-title-lg text-slate-900 font-bold tracking-tight">Recording starts in...</h2><p class="font-body-sm text-body-sm text-slate-500 font-medium">Consolidated studio pipeline ready for capture</p></div></section>
+<!-- Bottom Controls & Dismiss Safe Action Pill -->
+<footer class="w-full max-w-sm flex flex-col items-center gap-space-sm pb-space-sm"><button class="w-full py-space-sm px-space-lg rounded-full bg-white hover:bg-slate-50 border border-slate-200 text-slate-900 flex items-center justify-center gap-space-sm shadow-md active:scale-95 transition-all duration-150" id="cancel-btn" type="button"><span class="material-symbols-outlined text-red-600 text-body-lg font-semibold" data-icon="close">close</span><span class="font-label-lg text-label-lg font-semibold tracking-wide text-slate-900">Cancel Countdown</span></button><span class="font-label-sm text-label-sm text-slate-500 font-medium tracking-wide pt-space-xs">Tap anywhere outside to abort</span></footer>
+</main>
+<!-- Script for realistic countdown pulse & dismiss interaction -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const numElem = document.getElementById('countdown-number');
+      const cancelBtn = document.getElementById('cancel-btn');
+      let currentVal = 3;
+
+      const countdownInterval = setInterval(() => {
+        if (currentVal > 1) {
+          currentVal--;
+          numElem.classList.add('scale-75', 'opacity-50');
+          setTimeout(() => {
+            numElem.textContent = currentVal;
+            numElem.classList.remove('scale-75', 'opacity-50');
+          }, 120);
+        } else {
+          clearInterval(countdownInterval);
+          numElem.classList.add('scale-75', 'opacity-50');
+          setTimeout(() => {
+            numElem.textContent = 'REC';
+            numElem.classList.add('text-primary-container');
+            numElem.classList.remove('scale-75', 'opacity-50');
+          }, 120);
+        }
+      }, 1000);
+
+      cancelBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        clearInterval(countdownInterval);
+        numElem.textContent = 'STOP';
+        numElem.classList.add('text-secondary');
+      });
+    });
+  </script>
+</body></html>
+
+8 .Active Recording – Floating Controls Screen :
